@@ -1,0 +1,13 @@
+
+experiment_id,rq,experiment,priority,models,training_pool,representation,evaluation_method,train_fraction,repeats,test_policy
+E01,RQ1,Matched_Benchmark,Required,LR|SVM|MLP|QuantumKernel|VQC,quantum_dev_pool,PCA_k4,Stratified_5Fold,100%,1,Locked
+E02,RQ1,Strong_Classical,Required,LR|SVM|MLP,full_development,Full_Features,Stratified_5Fold,100%,1,Locked
+E03,RQ2,Learning_Curve_25,Required,LR|SVM|MLP|QuantumKernel|VQC,quantum_dev_pool,PCA_k4,Stratified_Holdout,25%_train_base,3,Locked
+E04,RQ2,Learning_Curve_50,Required,LR|SVM|MLP|QuantumKernel|VQC,quantum_dev_pool,PCA_k4,Stratified_Holdout,50%_train_base,3,Locked
+E05,RQ2,Learning_Curve_100,Required,LR|SVM|MLP|QuantumKernel|VQC,quantum_dev_pool,PCA_k4,Stratified_Holdout,100%_train_base,3,Locked
+E06,RQ3,Qubit_Ablation_k2,Recommended,SVM|QuantumKernel|VQC,quantum_dev_pool,PCA_k2,Same_5Folds_as_E01,100%,1,Locked
+E07,RQ3,Qubit_Ablation_k4,Reuse_E01,SVM|QuantumKernel|VQC,quantum_dev_pool,PCA_k4,Reuse_E01_Results,100%,1,Locked
+E08,RQ1,Final_Matched,Required,LR|SVM|MLP|QuantumKernel|VQC,quantum_dev_pool,PCA_k4,Frozen_Final_Test,100%,1,Run_Once
+E09,RQ1,Final_Strong_Classical,Required,LR|SVM|MLP,full_development,Full_Features,Frozen_Final_Test,100%,1,Run_Once
+E10,RQ1,Paired_Bootstrap,Required,QuantumKernel_vs_SVM|VQC_vs_SVM,frozen_test_predictions,PCA_k4,Paired_Bootstrap,Not_Applicable,1000,Same_Final_Test
+E11,RQ3,Qubit_Ablation_k6,Optional,SVM|QuantumKernel|VQC,quantum_dev_pool,PCA_k6,Same_5Folds_as_E01,100%,1,Locked

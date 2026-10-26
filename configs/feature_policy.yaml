@@ -1,0 +1,632 @@
+schema_version: '0.1'
+policy_status: RESEARCH_APPROVED_WITH_TEMPORAL_ASSUMPTION
+prediction_contract: docs/research_decisions.md
+temporal_conclusion: docs/research_decisions.md
+source_review: docs/reference/feature_policy_review.csv
+temporal_review: docs/reference/temporal_evidence_review.csv
+training_allowed: true
+approved_X_columns:
+- Gender
+- Age
+- Height (cm)
+- Weight (kg)
+- Diabetes
+- Congestive Heart Failure and/or Cardiomyopathy
+- Valve Replacement
+- Current Smoker
+- CYP2C9 consensus
+- VKORC1 -1639 consensus
+eligibility_filter: Subject Reached Stable Dose of Warfarin
+target_source: Therapeutic Dose of Warfarin
+post_outcome_excluded: INR on Reported Therapeutic Dose of Warfarin
+column_count: 68
+columns:
+- column_index: 1
+  column_name: PharmGKB Subject ID
+  role: identifier
+  proposed_decision: EXCLUDE
+  approval_status: EXCLUDED
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Mã định danh bệnh nhân không phải đặc trưng sinh học dự đoán liều; chỉ giữ để đối chiếu và
+    truy vết.
+- column_index: 2
+  column_name: PharmGKB Sample ID
+  role: identifier
+  proposed_decision: EXCLUDE
+  approval_status: EXCLUDED
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Mã định danh mẫu sinh học không phải đặc trưng sinh học dự đoán liều; chỉ giữ để đối chiếu
+    và truy vết.
+- column_index: 3
+  column_name: Project Site
+  role: site_metadata
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Mã trung tâm thu thập có thể khiến mô hình học khác biệt giữa các cơ sở thay vì quan hệ lâm
+    sàng có thể khái quát.
+- column_index: 4
+  column_name: Gender
+  role: demographic
+  proposed_decision: CANDIDATE
+  approval_status: RESEARCH_APPROVED_WITH_ASSUMPTION
+  timing_evidence: UNVERIFIED
+  include_in_X: true
+  rationale_vi: Giới tính có thể đã biết trước điều trị; không được tính trực tiếp từ liều ổn định.
+- column_index: 5
+  column_name: Race (Reported)
+  role: sensitive_demographic
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Thông tin nhạy cảm, các cột Reported và OMB có thể biểu diễn cùng nguồn thông tin; không mặc
+    định đưa vào core.
+- column_index: 6
+  column_name: Race (OMB)
+  role: sensitive_demographic
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Thông tin nhạy cảm, các cột Reported và OMB có thể biểu diễn cùng nguồn thông tin; không mặc
+    định đưa vào core.
+- column_index: 7
+  column_name: Ethnicity (Reported)
+  role: sensitive_demographic
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Thông tin nhạy cảm, các cột Reported và OMB có thể biểu diễn cùng nguồn thông tin; không mặc
+    định đưa vào core.
+- column_index: 8
+  column_name: Ethnicity (OMB)
+  role: sensitive_demographic
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Thông tin nhạy cảm, các cột Reported và OMB có thể biểu diễn cùng nguồn thông tin; không mặc
+    định đưa vào core.
+- column_index: 9
+  column_name: Age
+  role: baseline_clinical
+  proposed_decision: CANDIDATE
+  approval_status: RESEARCH_APPROVED_WITH_ASSUMPTION
+  timing_evidence: UNVERIFIED
+  include_in_X: true
+  rationale_vi: Nhóm tuổi là thông tin có thể đo trước khi chọn liều và không suy ra từ liều ổn định.
+- column_index: 10
+  column_name: Height (cm)
+  role: baseline_clinical
+  proposed_decision: CANDIDATE
+  approval_status: RESEARCH_APPROVED_WITH_ASSUMPTION
+  timing_evidence: UNVERIFIED
+  include_in_X: true
+  rationale_vi: Chiều cao là thông tin có thể đo trước khi chọn liều và không suy ra từ liều ổn định.
+- column_index: 11
+  column_name: Weight (kg)
+  role: baseline_clinical
+  proposed_decision: CANDIDATE
+  approval_status: RESEARCH_APPROVED_WITH_ASSUMPTION
+  timing_evidence: UNVERIFIED
+  include_in_X: true
+  rationale_vi: Cân nặng là thông tin có thể đo trước khi chọn liều và không suy ra từ liều ổn định.
+- column_index: 12
+  column_name: Indication for Warfarin Treatment
+  role: clinical_indication
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Chỉ định điều trị có thể hợp lệ trước liều; audit phát hiện 104 giá trị cú pháp không chuẩn,
+    chưa chốt cách mã hóa.
+- column_index: 13
+  column_name: Comorbidities
+  role: free_text_clinical
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Chuỗi bệnh đồng mắc có thể có ích nhưng cần xác minh thời điểm và quy tắc xử lý văn bản.
+- column_index: 14
+  column_name: Diabetes
+  role: baseline_clinical
+  proposed_decision: CANDIDATE
+  approval_status: RESEARCH_APPROVED_WITH_ASSUMPTION
+  timing_evidence: UNVERIFIED
+  include_in_X: true
+  rationale_vi: Tình trạng Đái tháo đường có thể được biết trước khi ra quyết định liều; không trực tiếp tạo
+    từ target.
+- column_index: 15
+  column_name: Congestive Heart Failure and/or Cardiomyopathy
+  role: baseline_clinical
+  proposed_decision: CANDIDATE
+  approval_status: RESEARCH_APPROVED_WITH_ASSUMPTION
+  timing_evidence: UNVERIFIED
+  include_in_X: true
+  rationale_vi: Tình trạng Suy tim/bệnh cơ tim có thể được biết trước khi ra quyết định liều; không trực tiếp
+    tạo từ target.
+- column_index: 16
+  column_name: Valve Replacement
+  role: baseline_clinical
+  proposed_decision: CANDIDATE
+  approval_status: RESEARCH_APPROVED_WITH_ASSUMPTION
+  timing_evidence: UNVERIFIED
+  include_in_X: true
+  rationale_vi: Tình trạng Tiền sử thay van có thể được biết trước khi ra quyết định liều; không trực tiếp
+    tạo từ target.
+- column_index: 17
+  column_name: Medications
+  role: medication_text
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Chuỗi tên thuốc có thể bao hàm thông tin từ các cờ thuốc ở cột khác và chưa rõ thời điểm ghi
+    nhận.
+- column_index: 18
+  column_name: Aspirin
+  role: medication_flag
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cờ sử dụng thuốc hoặc chất bổ sung; có thể liên quan đến nhu cầu liều nhưng chưa chứng minh
+    được tình trạng sử dụng trước thời điểm dự đoán.
+- column_index: 19
+  column_name: Acetaminophen or Paracetamol (Tylenol)
+  role: medication_flag
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cờ sử dụng thuốc hoặc chất bổ sung; có thể liên quan đến nhu cầu liều nhưng chưa chứng minh
+    được tình trạng sử dụng trước thời điểm dự đoán.
+- column_index: 20
+  column_name: Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day
+  role: medication_flag
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Liều acetaminophen/paracetamol >1300 mg/ngày; có thể liên quan đến nhu cầu liều nhưng chưa
+    chứng minh được tình trạng sử dụng trước thời điểm dự đoán.
+- column_index: 21
+  column_name: Simvastatin (Zocor)
+  role: medication_flag
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cờ sử dụng thuốc hoặc chất bổ sung; có thể liên quan đến nhu cầu liều nhưng chưa chứng minh
+    được tình trạng sử dụng trước thời điểm dự đoán.
+- column_index: 22
+  column_name: Atorvastatin (Lipitor)
+  role: medication_flag
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cờ sử dụng thuốc hoặc chất bổ sung; có thể liên quan đến nhu cầu liều nhưng chưa chứng minh
+    được tình trạng sử dụng trước thời điểm dự đoán.
+- column_index: 23
+  column_name: Fluvastatin (Lescol)
+  role: medication_flag
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cờ sử dụng thuốc hoặc chất bổ sung; có thể liên quan đến nhu cầu liều nhưng chưa chứng minh
+    được tình trạng sử dụng trước thời điểm dự đoán.
+- column_index: 24
+  column_name: Lovastatin (Mevacor)
+  role: medication_flag
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cờ sử dụng thuốc hoặc chất bổ sung; có thể liên quan đến nhu cầu liều nhưng chưa chứng minh
+    được tình trạng sử dụng trước thời điểm dự đoán.
+- column_index: 25
+  column_name: Pravastatin (Pravachol)
+  role: medication_flag
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cờ sử dụng thuốc hoặc chất bổ sung; có thể liên quan đến nhu cầu liều nhưng chưa chứng minh
+    được tình trạng sử dụng trước thời điểm dự đoán.
+- column_index: 26
+  column_name: Rosuvastatin (Crestor)
+  role: medication_flag
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cờ sử dụng thuốc hoặc chất bổ sung; có thể liên quan đến nhu cầu liều nhưng chưa chứng minh
+    được tình trạng sử dụng trước thời điểm dự đoán.
+- column_index: 27
+  column_name: Cerivastatin (Baycol)
+  role: medication_flag
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cờ sử dụng thuốc hoặc chất bổ sung; có thể liên quan đến nhu cầu liều nhưng chưa chứng minh
+    được tình trạng sử dụng trước thời điểm dự đoán.
+- column_index: 28
+  column_name: Amiodarone (Cordarone)
+  role: medication_flag
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cờ sử dụng thuốc hoặc chất bổ sung; có thể liên quan đến nhu cầu liều nhưng chưa chứng minh
+    được tình trạng sử dụng trước thời điểm dự đoán.
+- column_index: 29
+  column_name: Carbamazepine (Tegretol)
+  role: medication_flag
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cờ sử dụng thuốc hoặc chất bổ sung; có thể liên quan đến nhu cầu liều nhưng chưa chứng minh
+    được tình trạng sử dụng trước thời điểm dự đoán.
+- column_index: 30
+  column_name: Phenytoin (Dilantin)
+  role: medication_flag
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cờ sử dụng thuốc hoặc chất bổ sung; có thể liên quan đến nhu cầu liều nhưng chưa chứng minh
+    được tình trạng sử dụng trước thời điểm dự đoán.
+- column_index: 31
+  column_name: Rifampin or Rifampicin
+  role: medication_flag
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cờ sử dụng thuốc hoặc chất bổ sung; có thể liên quan đến nhu cầu liều nhưng chưa chứng minh
+    được tình trạng sử dụng trước thời điểm dự đoán.
+- column_index: 32
+  column_name: Sulfonamide Antibiotics
+  role: medication_flag
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cờ sử dụng thuốc hoặc chất bổ sung; có thể liên quan đến nhu cầu liều nhưng chưa chứng minh
+    được tình trạng sử dụng trước thời điểm dự đoán.
+- column_index: 33
+  column_name: Macrolide Antibiotics
+  role: medication_flag
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cờ sử dụng thuốc hoặc chất bổ sung; có thể liên quan đến nhu cầu liều nhưng chưa chứng minh
+    được tình trạng sử dụng trước thời điểm dự đoán.
+- column_index: 34
+  column_name: Anti-fungal Azoles
+  role: medication_flag
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cờ sử dụng anti-fungal azoles (Metadata còn bất nhất); có thể liên quan đến nhu cầu liều nhưng
+    chưa chứng minh được tình trạng sử dụng trước thời điểm dự đoán. Metadata về azoles có mô tả chưa nhất
+    quán, cần ghi nhận.
+- column_index: 35
+  column_name: Herbal Medications, Vitamins, Supplements
+  role: medication_flag
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cờ dùng thảo dược/vitamin/thực phẩm bổ sung; có thể liên quan đến nhu cầu liều nhưng chưa
+    chứng minh được tình trạng sử dụng trước thời điểm dự đoán.
+- column_index: 36
+  column_name: Target INR
+  role: target_inr
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Target INR là mục tiêu điều trị, không đồng nghĩa INR đo tại liều ổn định; có thể hợp lệ nếu
+    đặt trước khi chọn liều.
+- column_index: 37
+  column_name: Estimated Target INR Range Based on Indication
+  role: estimated_target_inr
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Khoảng INR mục tiêu ước tính từ chỉ định điều trị, không mặc định là target-derived từ stable
+    dose.
+- column_index: 38
+  column_name: Subject Reached Stable Dose of Warfarin
+  role: eligibility_filter
+  proposed_decision: EXCLUDE
+  approval_status: EXCLUDED
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Trạng thái đạt liều ổn định chỉ dùng xác định bệnh nhân đủ điều kiện, không phải feature X.
+- column_index: 39
+  column_name: Therapeutic Dose of Warfarin
+  role: target_source
+  proposed_decision: EXCLUDE
+  approval_status: EXCLUDED
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Liều ổn định mg/tuần là nguồn tạo Low/Intermediate/High nên đưa vào X sẽ làm lộ đáp án.
+- column_index: 40
+  column_name: INR on Reported Therapeutic Dose of Warfarin
+  role: post_outcome
+  proposed_decision: EXCLUDE
+  approval_status: EXCLUDED
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: INR đo trên liều điều trị đã được báo cáo là phép đo sau/ở thời điểm đã biết liều ổn định,
+    không hợp lệ cho dự đoán trước liều.
+- column_index: 41
+  column_name: Current Smoker
+  role: baseline_lifestyle
+  proposed_decision: CANDIDATE
+  approval_status: RESEARCH_APPROVED_WITH_ASSUMPTION
+  timing_evidence: UNVERIFIED
+  include_in_X: true
+  rationale_vi: Tình trạng hút thuốc có thể đã biết khi tư vấn điều trị và không trực tiếp suy ra từ liều
+    ổn định.
+- column_index: 42
+  column_name: Cyp2C9 genotypes
+  role: raw_genotype
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Genotype gốc có thể trùng thông tin với CYP2C9 consensus; không tự động là target leakage.
+- column_index: 43
+  column_name: Genotyped QC Cyp2C9*2
+  role: genotype_qc
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Biến QC phục vụ kiểm tra kiểu gen, có thể trùng/được tổng hợp trong CYP2C9 consensus; missing
+    rất cao.
+- column_index: 44
+  column_name: Genotyped QC Cyp2C9*3
+  role: genotype_qc
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Biến QC phục vụ kiểm tra kiểu gen, có thể trùng/được tổng hợp trong CYP2C9 consensus; missing
+    rất cao.
+- column_index: 45
+  column_name: Combined QC CYP2C9
+  role: genotype_qc
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Biến QC phục vụ kiểm tra kiểu gen, có thể trùng/được tổng hợp trong CYP2C9 consensus; missing
+    rất cao.
+- column_index: 46
+  column_name: 'VKORC1 genotype: -1639 G>A (3673); chr16:31015190; rs9923231; C/T'
+  role: raw_genotype
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cột VKORC1 genotype gốc mô tả locus có cột consensus tương ứng; dùng đồng thời có thể dư thừa
+    thông tin chứ không nhất thiết là target leakage.
+- column_index: 47
+  column_name: 'VKORC1 QC genotype: -1639 G>A (3673); chr16:31015190; rs9923231; C/T'
+  role: genotype_qc
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cột VKORC1 QC mô tả locus có cột consensus tương ứng; dùng đồng thời có thể dư thừa thông
+    tin chứ không nhất thiết là target leakage.
+- column_index: 48
+  column_name: 'VKORC1 genotype: 497T>G (5808); chr16:31013055; rs2884737; A/C'
+  role: raw_genotype
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cột VKORC1 genotype gốc mô tả locus có cột consensus tương ứng; dùng đồng thời có thể dư thừa
+    thông tin chứ không nhất thiết là target leakage.
+- column_index: 49
+  column_name: 'VKORC1 QC genotype: 497T>G (5808); chr16:31013055; rs2884737; A/C'
+  role: genotype_qc
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cột VKORC1 QC mô tả locus có cột consensus tương ứng; dùng đồng thời có thể dư thừa thông
+    tin chứ không nhất thiết là target leakage.
+- column_index: 50
+  column_name: 'VKORC1 genotype: 1173 C>T(6484); chr16:31012379; rs9934438; A/G'
+  role: raw_genotype
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cột VKORC1 genotype gốc mô tả locus có cột consensus tương ứng; dùng đồng thời có thể dư thừa
+    thông tin chứ không nhất thiết là target leakage.
+- column_index: 51
+  column_name: 'VKORC1 QC genotype: 1173 C>T(6484); chr16:31012379; rs9934438; A/G'
+  role: genotype_qc
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cột VKORC1 QC mô tả locus có cột consensus tương ứng; dùng đồng thời có thể dư thừa thông
+    tin chứ không nhất thiết là target leakage.
+- column_index: 52
+  column_name: 'VKORC1 genotype: 1542G>C (6853); chr16:31012010; rs8050894; C/G'
+  role: raw_genotype
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cột VKORC1 genotype gốc mô tả locus có cột consensus tương ứng; dùng đồng thời có thể dư thừa
+    thông tin chứ không nhất thiết là target leakage.
+- column_index: 53
+  column_name: 'VKORC1 QC genotype: 1542G>C (6853); chr16:31012010; rs8050894; C/G'
+  role: genotype_qc
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cột VKORC1 QC mô tả locus có cột consensus tương ứng; dùng đồng thời có thể dư thừa thông
+    tin chứ không nhất thiết là target leakage.
+- column_index: 54
+  column_name: 'VKORC1 genotype: 3730 G>A (9041); chr16:31009822; rs7294;  A/G'
+  role: raw_genotype
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cột VKORC1 genotype gốc mô tả locus có cột consensus tương ứng; dùng đồng thời có thể dư thừa
+    thông tin chứ không nhất thiết là target leakage.
+- column_index: 55
+  column_name: 'VKORC1 QC genotype: 3730 G>A (9041); chr16:31009822; rs7294;  A/G'
+  role: genotype_qc
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cột VKORC1 QC mô tả locus có cột consensus tương ứng; dùng đồng thời có thể dư thừa thông
+    tin chứ không nhất thiết là target leakage.
+- column_index: 56
+  column_name: 'VKORC1 genotype: 2255C>T (7566); chr16:31011297; rs2359612; A/G'
+  role: raw_genotype
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cột VKORC1 genotype gốc mô tả locus có cột consensus tương ứng; dùng đồng thời có thể dư thừa
+    thông tin chứ không nhất thiết là target leakage.
+- column_index: 57
+  column_name: 'VKORC1 QC genotype: 2255C>T (7566); chr16:31011297; rs2359612; A/G'
+  role: genotype_qc
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cột VKORC1 QC mô tả locus có cột consensus tương ứng; dùng đồng thời có thể dư thừa thông
+    tin chứ không nhất thiết là target leakage.
+- column_index: 58
+  column_name: 'VKORC1 genotype: -4451 C>A (861); Chr16:31018002; rs17880887; A/C'
+  role: raw_genotype
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cột VKORC1 genotype gốc mô tả locus có cột consensus tương ứng; dùng đồng thời có thể dư thừa
+    thông tin chứ không nhất thiết là target leakage.
+- column_index: 59
+  column_name: 'VKORC1 QC genotype: -4451 C>A (861); Chr16:31018002; rs17880887; A/C'
+  role: genotype_qc
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Cột VKORC1 QC mô tả locus có cột consensus tương ứng; dùng đồng thời có thể dư thừa thông
+    tin chứ không nhất thiết là target leakage.
+- column_index: 60
+  column_name: CYP2C9 consensus
+  role: consensus_genotype
+  proposed_decision: CANDIDATE
+  approval_status: RESEARCH_APPROVED_WITH_ASSUMPTION
+  timing_evidence: UNVERIFIED
+  include_in_X: true
+  rationale_vi: Genotype đồng thuận là ứng viên đại diện CYP2C9 chính; không phải biến được tạo trực tiếp
+    từ therapeutic dose theo Metadata.
+- column_index: 61
+  column_name: VKORC1 -1639 consensus
+  role: consensus_genotype
+  proposed_decision: CANDIDATE
+  approval_status: RESEARCH_APPROVED_WITH_ASSUMPTION
+  timing_evidence: UNVERIFIED
+  include_in_X: true
+  rationale_vi: VKORC1 -1639 consensus là ứng viên locus VKORC1 chính, thay vì mặc định dùng tất cả các biến
+    liên quan.
+- column_index: 62
+  column_name: VKORC1 497 consensus
+  role: secondary_consensus_genotype
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Biến VKORC1 consensus của locus bổ sung có thể trùng hoặc liên kết di truyền với -1639; không
+    có bằng chứng phải đưa vào core.
+- column_index: 63
+  column_name: VKORC1 1173 consensus
+  role: secondary_consensus_genotype
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Biến VKORC1 consensus của locus bổ sung có thể trùng hoặc liên kết di truyền với -1639; không
+    có bằng chứng phải đưa vào core.
+- column_index: 64
+  column_name: VKORC1 1542 consensus
+  role: secondary_consensus_genotype
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Biến VKORC1 consensus của locus bổ sung có thể trùng hoặc liên kết di truyền với -1639; không
+    có bằng chứng phải đưa vào core.
+- column_index: 65
+  column_name: VKORC1 3730 consensus
+  role: secondary_consensus_genotype
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Biến VKORC1 consensus của locus bổ sung có thể trùng hoặc liên kết di truyền với -1639; không
+    có bằng chứng phải đưa vào core.
+- column_index: 66
+  column_name: VKORC1 2255 consensus
+  role: secondary_consensus_genotype
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Biến VKORC1 consensus của locus bổ sung có thể trùng hoặc liên kết di truyền với -1639; không
+    có bằng chứng phải đưa vào core.
+- column_index: 67
+  column_name: VKORC1 -4451 consensus
+  role: secondary_consensus_genotype
+  proposed_decision: HOLD
+  approval_status: HOLD
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Biến VKORC1 consensus của locus bổ sung có thể trùng hoặc liên kết di truyền với -1639; không
+    có bằng chứng phải đưa vào core.
+- column_index: 68
+  column_name: Comments regarding Project Site Dataset
+  role: free_text_site_note
+  proposed_decision: EXCLUDE
+  approval_status: EXCLUDED
+  timing_evidence: NOT_VERIFIED_FOR_CORE
+  include_in_X: false
+  rationale_vi: Ghi chú tự do từ project site thiếu nhiều, có thể chứa thông tin phát sinh sau điều trị hoặc
+    thông tin định danh.
+research_training_allowed: true
+clinical_deployment_allowed: false
+protocol_amendment: docs/research_decisions.md
+outlier_policy: RETAIN_WITH_SENSITIVITY_ANALYSIS

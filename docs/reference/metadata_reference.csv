@@ -1,0 +1,131 @@
+﻿Phenotype Data File Name,"Warfarin Consortium Combined Data Set, March 2008",,,
+,,,,
+Group,IWPC,,,
+Investigator,International Warfarin Pharmacogenetics Consortium (warfarinconsortium@gmail.com),,,
+Contact,International Warfarin Pharmacogenetics Consortium (warfarinconsortium@gmail.com),,,
+Reference,see http://www.pharmgkb.org/views/project.jsp?pId=56,,,
+PubMed Id(s), ,,,
+Description,"Background:  Initiation of warfarin therapy using trial-and-error dosing is associated with adverse events.  Single nucleotide polymorphisms (SNPs) in genes for cytochrome P450 2C9 (CYP2C9) and vitamin K epoxide reductase (VKORC1) correlate with warfarin requirements.   A number of pharmacogenomics research centers have collected data sets relating warfarin dosing to a variety of clinical and genetic parameters including genotypes of CYP2C9 and VKORC1. There is an interest among these groups in sharing their data, in order to possibly arrive at a consensus model for dosing that is consistent with all data sets. 
+Conclusions:  Pharmacogenetics-based warfarin therapy is feasible and offers a more accurate method for predicting the therapeutic warfarin dose than clinical factors alone. ",,,
+,,,,
+Keywords,anticoagulants; cytochrome P450; mixed function oxygenases; VKORC1; warfarin,,,
+Categories of Pharmacogenetic Knowledge,Pharmacodynamics and Drug Response; Pharmacokinetics; Genotype,,,
+Phenotype Classification,Coagulation Profile; Warfarin; Vitamin K,,,
+,,,,
+Drug(s),warfarin; aspirin; simvastatin; amiodarone,,,
+Gene(s),cyp2c9; vkorc1,,,
+Disease(s),atrial fibrillation,,,
+,,,,
+Disclaimer:  Patients and doctors should NOT make treatment decisions based on the information in the PharmGKB as it is purely a research resource.  Questions about the data should be directed to feedback@pharmgkb.org,,,,
+,,,,
+"Sample demographic information column headings are coloured grey, phenotypic information column headings are coloured green, genotypic information column headings are coloured yellow, background information column headings are coloured purple.",,,,
+                                                                                                                                      Data Columns,,,,
+Name,Description,Data Type,Unit Of Measure,Unit Of Measure Type
+PharmGKB Subject ID,Subject ID numbers in the PharmGKB.  A  search can be performed to find genotype information on subjects using these ID numbers. ,character,   , 
+PharmGKB Sample ID,Sample ID numbers in the PharmGKB.  A  search can be performed to find genotype information on subjects using these ID numbers. ,character,   , 
+Project Site,Coded project site where data was collected. ,character,   ,   
+Gender,"Male, Female or not known = -99",character,   ,   
+Race (Reported),Self-reported information.,character,   ,   
+Race (OMB),"Racial categories used are as defined by the Office of Management and Budget, which can be found at http://grants2.nih.gov/grants/guide/notice-files/NOT-OD-01-053.html",character,   ,   
+Ethnicity (Reported),Self-reported information,character,   ,   
+Ethnicity (OMB),"Ethnicity categories used are as defined by the Office of Management and Budget, which can be found at http://grants2.nih.gov/grants/guide/notice-files/NOT-OD-01-053.html",character,   ,   
+Age,"Binned age reported in years (0 - 9, 10 - 19, 20 - 29, 30 - 39, 40 - 49, 50 - 59, 60 - 69, 70 - 79, 80 - 89, 90+)",number, , 
+Height (cm),Reported in centimeters,number,cm,Height
+Weight (kg),Reported in kilograms,number,kg,Mass
+Indication for Warfarin Treatment,"DVT = 1, PE = 2, Afib/flutter = 3, Heart Valve = 4, Cardiomyopathy/LV Dilation = 5, Stroke = 6, Post-Orthopedic = 7, Other = 8 or NA; multiple indications are separated by semi-colons",character,,
+Comorbidities,List of diseases co-occuring in the patient,character,   ,
+Diabetes,"yes = 1, not present = 0 or not known = NA",character,,
+Congestive Heart Failure and/or Cardiomyopathy,"yes = 1, not present = 0 or not known = NA",character,,
+Valve Replacement,"yes = 1, not present = 0 or not known = NA",character,,
+Medications,List of medicines taken separated by semi-colons ,character,   ,
+Aspirin,"yes = 1, not present = 0 or not known = NA",character,   ,
+Acetaminophen or Paracetamol (Tylenol),"yes = 1, not present = 0 or not known = NA",character,,
+Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day,"yes = 1, no = 0 ",character,,
+Simvastatin (Zocor),"yes = 1, not present = 0 or not known = NA",character,   ,
+Atorvastatin (Lipitor),"yes = 1, not present = 0 or not known = NA",character,,
+Fluvastatin (Lescol),"yes = 1, not present = 0 or not known = NA",character,,
+Lovastatin (Mevacor),"yes = 1, not present = 0 or not known = NA",character,,
+Pravastatin (Pravachol),"yes = 1, not present = 0 or not known = NA",character,,
+Rosuvastatin (Crestor),"yes = 1, not present = 0 or not known = NA",character,,
+Cerivastatin (Baycol),"yes = 1, not present = 0 or not known = NA",character,,
+Amiodarone (Cordarone),"yes = 1, not present = 0 or not known = NA",character,   ,
+Carbamazepine (Tegretol),"yes = 1, not present = 0 or not known = NA",character,,
+Phenytoin (Dilantin),"yes = 1, not present = 0 or not known = NA",character,,
+Rifampin or Rifampicin,"yes = 1, not present = 0 or not known = NA",character,,
+Sulfonamide Antibiotics,"Includes Septra, Bactrim, Cotrim and Sulfatrim; yes = 1, not present = 0 or not known = NA",character,,
+Macrolide Antibiotics,"Includes erythromycin, azithromycin, and clarithromycin; yes = 1, not present = 0 or not known = NA",character,,
+Anti-fungal Azoles,"Includes ketoconazole, fluconazole, itraconazole, metronidazole, etc. Please do not include other drugs that end in ""azole"" such as omeprazole or metronidazole; yes = 1, not present = 0 or not known = NA",character,,
+"Herbal Medications, Vitamins, Supplements","Includes garlic, ginseng, danshen, donquai, vitamins, zinc, iron, magnesium, etc. yes = 1, not present = 0 or not known = NA",character,,
+Target INR,Target International Normalized Ratio or NA,character,mg/week,Mass per Unit Time
+Estimated Target INR Range Based on Indication,"If the target INR is not known, please give estimated target INR ranged based on Indication",number,,
+Subject Reached Stable Dose of Warfarin,"yes = 1, no = 0 or not known = NA",character,,
+Therapeutic Dose of Warfarin,Dose given in milligrams/week,number,mg/week,Mass per Unit Time
+INR on Reported Therapeutic Dose of Warfarin,International Normalized Ratio on the Therapeutic Dose of Warfarin Reported Above,number,,   
+Current Smoker,"yes = 1, not present = 0 or not known = NA",character,,   
+Cyp2C9 genotypes,"*1, *2, *3, *4, *5, *6, *7, *8, *9, *10, *11, *12, or *13 (see https://www.pharmgkb.org/do/serve?objId=PA126&objCls=Gene for specifics of named alleles)",character,   ,   
+Genotyped QC Cyp2C9*2,"*1, *2, (see https://www.pharmgkb.org/do/serve?objId=PA126&objCls=Gene for specifics of named alleles)",character,   ,   
+Genotyped QC Cyp2C9*3,"*1, *3 (see https://www.pharmgkb.org/do/serve?objId=PA126&objCls=Gene for specifics of named alleles)",character,   ,   
+Combined QC CYP2C9,"Combined separate genotypes for *2 and *3 into single CYP2C9 diplotypes with possible values *1/*1, *1/*2, *1/*3, *2/*2, *2/*3, *3/*3",character,,
+VKORC1 genotype: -1639 G>A (3673); chr16:31015190; rs9923231; C/T,"A/A, A/G, G/G or NA",character,   ,   
+VKORC1 QC genotype: -1639 G>A (3673); chr16:31015190; rs9923231; C/T,"A/A, A/G, G/G or NA",character,   ,   
+VKORC1 genotype: 497T>G (5808); chr16:31013055; rs2884737; A/C,"G/G, G/T, T/T or NA",character,   ,   
+VKORC1 QC genotype: 497T>G (5808); chr16:31013055; rs2884737; A/C,"G/G, G/T, T/T or NA",character,   ,   
+VKORC1 genotype: 1173 C>T(6484); chr16:31012379; rs9934438; A/G,"C/C, C/T, T/T or NA",character,   ,   
+VKORC1 QC genotype: 1173 C>T(6484); chr16:31012379; rs9934438; A/G,"C/C, C/T, T/T or NA",character,   ,   
+VKORC1 genotype: 1542G>C (6853); chr16:31012010; rs8050894; C/G,"C/C, C/G, G/G or NA (Note: alleles for 1542 G/C defined on coding strand, while rs8050894 alleles defined on non-coding strand)",character,   ,   
+VKORC1 QC genotype: 1542G>C (6853); chr16:31012010; rs8050894; C/G,"C/C, C/G, G/G or NA (Note: alleles for 1542 G/C defined on coding strand, while rs8050894 alleles defined on non-coding strand)",character,   ,   
+VKORC1 genotype: 3730 G>A (9041); chr16:31009822; rs7294;  A/G,"A/A, A/G, G/G or NA",character,   ,   
+VKORC1 QC genotype: 3730 G>A (9041); chr16:31009822; rs7294;  A/G,"A/A, A/G, G/G or NA",character,   ,   
+VKORC1 genotype: 2255C>T (7566); chr16:31011297; rs2359612; A/G,"C/C, C/T, T/T or NA",character, , 
+VKORC1 QC genotype: 2255C>T (7566); chr16:31011297; rs2359612; A/G,"C/C, C/T, T/T or NA",character, , 
+VKORC1 genotype: -4451 C>A (861); Chr16:31018002; rs17880887; A/C,"A/A, A/C, C/C or NA",character, , 
+VKORC1 QC genotype: -4451 C>A (861); Chr16:31018002; rs17880887; A/C,"A/A, A/C, C/C or NA",character, , 
+CYP2C9 consensus,"Derived consensus between original and Combined QC genotypes as follows:
+If Original equals QC, use common value
+If Original equals NA, use QC
+If QC equals NA, use Original
+If Original is not equal to QC, set value to NA unless Original contains an allele not typed in QC, then use Original
+All subjects not included in QC genotyping retain Original value",character,,
+VKORC1 -1639 consensus,"Derived consensus between original and QC genotypes as follows:
+If Originalequals QC, use common value
+If Original equals NA, use QC
+If QC equals NA, use Original
+If Original is not equal to QC, set value to NA
+All subjects not included in QC genotyping retain Original value",character,,
+VKORC1 497 consensus,"Derived consensus between original and QC genotypes as follows:
+If Original equals QC, use common value
+If Original equals NA, use QC
+If QC equals NA, use Original
+If Original is not equal to QC, set value to NA
+All subjects not included in QC genotyping retain Original value",character,,
+VKORC1 1173 consensus,"Derived consensus between original and QC genotypes as follows:
+If Original equals QC, use common value
+If Original equals NA, use QC
+If QC equals NA, use Original
+If Original is not equal to QC, set value to NA
+All subjects not included in QC genotyping retain Original value",character,,
+VKORC1 1542 consensus,"Derived consensus between original and QC genotypes as follows:
+If Original equals QC, use common value
+If Original equals NA, use QC
+If QC equals NA, use Original
+If Original is not equal to QC, set value to NA
+All subjects not included in QC genotyping retain Original value",character,,
+VKORC1 3730 consensus,"Derived consensus between original and QC genotypes as follows:
+If Original equals QC, use common value
+If Original equals NA, use QC
+If QC equals NA, use Original
+If Original is not equal to QC, set value to NA
+All subjects not included in QC genotyping retain Original value",character,,
+VKORC1 2255 consensus,"Derived consensus between original and QC genotypes as follows:
+If Original equals QC, use common value
+If Original equals NA, use QC
+If QC equals NA, use Original
+If Original is not equal to QC, set value to NA
+All subjects not included in QC genotyping retain Original value",character,,
+VKORC1 -4451 consensus,"Derived consensus between original and QC genotypes as follows:
+If Original equals QC, use common value
+If Original equals NA, use QC
+If QC equals NA, use Original
+If Original is not equal to QC, set value to NA
+All subjects not included in QC genotyping retain Original value",character,,
+Comments regarding Project Site Dataset,Any additional comments that the investigators felt should be included in the release of their data,character, , 

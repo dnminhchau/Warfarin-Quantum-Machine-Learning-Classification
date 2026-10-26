@@ -1,0 +1,109 @@
+﻿column_index,column_name,description,data_type,unit,missing_count,missing_pct,unique_count,feature_role,metadata_matches,metadata_context,review_note
+1,PharmGKB Subject ID,Mã định danh bệnh nhân trong PharmGKB; dùng để tra cứu thông tin kiểu gen theo bệnh nhân.,str,N/A,0,0,5700,exclude,1,Row 23: PharmGKB Subject ID | Subject ID numbers in the PharmGKB.  A  search can be performed to find genotype information on subjects using these ID numbers. | character,
+2,PharmGKB Sample ID,Mã định danh mẫu trong PharmGKB; dùng để tra cứu dữ liệu kiểu gen của mẫu.,str,N/A,0,0,5700,exclude,1,Row 24: PharmGKB Sample ID | Sample ID numbers in the PharmGKB.  A  search can be performed to find genotype information on subjects using these ID numbers. | character,
+3,Project Site,Mã địa điểm/trung tâm nghiên cứu đã thu thập dữ liệu.,int64,N/A,0,0,21,uncertain,1,Row 25: Project Site | Coded project site where data was collected. | character,
+4,Gender,"Giới tính được ghi nhận: nam, nữ hoặc không rõ (-99).",str,N/A,4,0.07,2,uncertain,1,"Row 26: Gender | Male, Female or not known = -99 | character",
+5,Race (Reported),Thông tin chủng tộc do đối tượng tự khai báo.,str,N/A,506,8.88,22,uncertain,1,Row 27: Race (Reported) | Self-reported information. | character,
+6,Race (OMB),Nhóm chủng tộc theo hệ phân loại của Office of Management and Budget (OMB).,str,N/A,0,0,4,uncertain,1,"Row 28: Race (OMB) | Racial categories used are as defined by the Office of Management and Budget, which can be found at http://grants2.nih.gov/grants/guide/notice-files/NOT-OD-01-053.html | character",
+7,Ethnicity (Reported),Thông tin sắc tộc do đối tượng tự khai báo.,str,N/A,1239,21.74,26,uncertain,1,Row 29: Ethnicity (Reported) | Self-reported information | character,
+8,Ethnicity (OMB),Nhóm sắc tộc theo hệ phân loại của Office of Management and Budget (OMB).,str,N/A,0,0,3,uncertain,1,"Row 30: Ethnicity (OMB) | Ethnicity categories used are as defined by the Office of Management and Budget, which can be found at http://grants2.nih.gov/grants/guide/notice-files/NOT-OD-01-053.html | character",
+9,Age,"Nhóm tuổi theo các khoảng 10 năm (0–9, 10–19, …, 80–89, 90+), không phải tuổi chính xác.",str,years (nhóm tuổi),42,0.74,9,uncertain,1,"Row 31: Age | Binned age reported in years (0 - 9, 10 - 19, 20 - 29, 30 - 39, 40 - 49, 50 - 59, 60 - 69, 70 - 79, 80 - 89, 90+) | number","Age is stored as ranges, e.g. 60 - 69"
+10,Height (cm),"Chiều cao bệnh nhân, báo cáo bằng centimet.",float64,cm,1146,20.11,350,uncertain,1,Row 32: Height (cm) | Reported in centimeters | number | cm | Height,
+11,Weight (kg),"Cân nặng bệnh nhân, báo cáo bằng kilogram.",float64,kg,287,5.04,850,uncertain,1,Row 33: Weight (kg) | Reported in kilograms | number | kg | Mass,
+12,Indication for Warfarin Treatment,"Chỉ định điều trị Warfarin được mã hóa 1–8 (ví dụ huyết khối tĩnh mạch sâu, thuyên tắc phổi, rung nhĩ, bệnh van tim); một người có thể có nhiều mã, phân tách bằng dấu chấm phẩy.",object,N/A,698,12.25,52,uncertain,1,"Row 34: Indication for Warfarin Treatment | DVT = 1, PE = 2, Afib/flutter = 3, Heart Valve = 4, Cardiomyopathy/LV Dilation = 5, Stroke = 6, Post-Orthopedic = 7, Other = 8 or NA; multiple indications are separated by semi-colons | character",May contain multiple codes
+13,Comorbidities,Danh sách các bệnh lý đồng mắc của bệnh nhân.,str,N/A,1955,34.3,1560,uncertain,1,Row 35: Comorbidities | List of diseases co-occuring in the patient | character,
+14,Diabetes,"Tình trạng đái tháo đường: có = 1, không ghi nhận = 0, không rõ = NA.",float64,N/A,2417,42.4,2,uncertain,1,"Row 36: Diabetes | yes = 1, not present = 0 or not known = NA | character",
+15,Congestive Heart Failure and/or Cardiomyopathy,"Tình trạng suy tim sung huyết và/hoặc bệnh cơ tim: có = 1, không ghi nhận = 0, không rõ = NA.",float64,N/A,1688,29.61,2,uncertain,1,"Row 37: Congestive Heart Failure and/or Cardiomyopathy | yes = 1, not present = 0 or not known = NA | character",
+16,Valve Replacement,"Tình trạng đã thay van tim: có = 1, không ghi nhận = 0, không rõ = NA.",float64,N/A,1742,30.56,2,uncertain,1,"Row 38: Valve Replacement | yes = 1, not present = 0 or not known = NA | character",
+17,Medications,"Danh sách thuốc đang dùng, các tên thuốc phân tách bằng dấu chấm phẩy.",str,N/A,1404,24.63,2006,uncertain,1,Row 39: Medications | List of medicines taken separated by semi-colons | character,
+18,Aspirin,"Bệnh nhân có dùng aspirin: có = 1, không ghi nhận = 0, không rõ = NA.",float64,N/A,1860,32.63,2,uncertain,1,"Row 40: Aspirin | yes = 1, not present = 0 or not known = NA | character",
+19,Acetaminophen or Paracetamol (Tylenol),"Bệnh nhân có dùng acetaminophen/paracetamol: có = 1, không ghi nhận = 0, không rõ = NA.",float64,N/A,3426,60.11,2,uncertain,1,"Row 41: Acetaminophen or Paracetamol (Tylenol) | yes = 1, not present = 0 or not known = NA | character",
+20,Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day,"Cờ xác định liều acetaminophen/paracetamol có vượt 1.300 mg/ngày: có = 1, không = 0.",float64,N/A,4541,79.67,2,uncertain,1,"Row 42: Was Dose of Acetaminophen or Paracetamol (Tylenol) >1300mg/day | yes = 1, no = 0 | character",
+21,Simvastatin (Zocor),"Bệnh nhân có dùng simvastatin (Zocor): có = 1, không ghi nhận = 0, không rõ = NA.",float64,N/A,1839,32.26,2,uncertain,1,"Row 43: Simvastatin (Zocor) | yes = 1, not present = 0 or not known = NA | character",
+22,Atorvastatin (Lipitor),"Bệnh nhân có dùng atorvastatin (Lipitor): có = 1, không ghi nhận = 0, không rõ = NA.",float64,N/A,3245,56.93,2,uncertain,1,"Row 44: Atorvastatin (Lipitor) | yes = 1, not present = 0 or not known = NA | character",
+23,Fluvastatin (Lescol),"Bệnh nhân có dùng fluvastatin (Lescol): có = 1, không ghi nhận = 0, không rõ = NA.",float64,N/A,3277,57.49,2,uncertain,1,"Row 45: Fluvastatin (Lescol) | yes = 1, not present = 0 or not known = NA | character",
+24,Lovastatin (Mevacor),"Bệnh nhân có dùng lovastatin (Mevacor): có = 1, không ghi nhận = 0, không rõ = NA.",float64,N/A,3269,57.35,2,uncertain,1,"Row 46: Lovastatin (Mevacor) | yes = 1, not present = 0 or not known = NA | character",
+25,Pravastatin (Pravachol),"Bệnh nhân có dùng pravastatin (Pravachol): có = 1, không ghi nhận = 0, không rõ = NA.",float64,N/A,3267,57.32,2,uncertain,1,"Row 47: Pravastatin (Pravachol) | yes = 1, not present = 0 or not known = NA | character",
+26,Rosuvastatin (Crestor),"Bệnh nhân có dùng rosuvastatin (Crestor): có = 1, không ghi nhận = 0, không rõ = NA.",float64,N/A,3276,57.47,2,uncertain,1,"Row 48: Rosuvastatin (Crestor) | yes = 1, not present = 0 or not known = NA | character",
+27,Cerivastatin (Baycol),"Bệnh nhân có dùng cerivastatin (Baycol): có = 1, không ghi nhận = 0, không rõ = NA.",float64,N/A,3564,62.53,1,uncertain,1,"Row 49: Cerivastatin (Baycol) | yes = 1, not present = 0 or not known = NA | character",
+28,Amiodarone (Cordarone),"Bệnh nhân có dùng amiodarone (Cordarone): có = 1, không ghi nhận = 0, không rõ = NA.",float64,N/A,1518,26.63,2,uncertain,1,"Row 50: Amiodarone (Cordarone) | yes = 1, not present = 0 or not known = NA | character",
+29,Carbamazepine (Tegretol),"Bệnh nhân có dùng carbamazepine (Tegretol): có = 1, không ghi nhận = 0, không rõ = NA.",float64,N/A,3270,57.37,2,uncertain,1,"Row 51: Carbamazepine (Tegretol) | yes = 1, not present = 0 or not known = NA | character",
+30,Phenytoin (Dilantin),"Bệnh nhân có dùng phenytoin (Dilantin): có = 1, không ghi nhận = 0, không rõ = NA.",float64,N/A,3276,57.47,2,uncertain,1,"Row 52: Phenytoin (Dilantin) | yes = 1, not present = 0 or not known = NA | character",
+31,Rifampin or Rifampicin,"Bệnh nhân có dùng rifampin/rifampicin: có = 1, không ghi nhận = 0, không rõ = NA.",float64,N/A,3277,57.49,2,uncertain,1,"Row 53: Rifampin or Rifampicin | yes = 1, not present = 0 or not known = NA | character",
+32,Sulfonamide Antibiotics,"Bệnh nhân có dùng kháng sinh sulfonamide (ví dụ Septra, Bactrim, Cotrim, Sulfatrim): có = 1, không ghi nhận = 0, không rõ = NA.",float64,N/A,3278,57.51,2,uncertain,1,"Row 54: Sulfonamide Antibiotics | Includes Septra, Bactrim, Cotrim and Sulfatrim; yes = 1, not present = 0 or not known = NA | character",
+33,Macrolide Antibiotics,"Bệnh nhân có dùng kháng sinh macrolide (ví dụ erythromycin, azithromycin, clarithromycin): có = 1, không ghi nhận = 0, không rõ = NA.",float64,N/A,3277,57.49,2,uncertain,1,"Row 55: Macrolide Antibiotics | Includes erythromycin, azithromycin, and clarithromycin; yes = 1, not present = 0 or not known = NA | character",
+34,Anti-fungal Azoles,"Bệnh nhân có dùng thuốc nhóm azole được khai báo trong bộ dữ liệu: có = 1, không ghi nhận = 0, không rõ = NA; ví dụ và quy tắc loại trừ trong Metadata có chỗ mâu thuẫn, cần rà soát.",float64,N/A,3274,57.44,2,uncertain,1,"Row 56: Anti-fungal Azoles | Includes ketoconazole, fluconazole, itraconazole, metronidazole, etc. Please do not include other drugs that end in ""azole"" such as omeprazole or metronidazole; yes = 1, not present = 0 or not known = NA | character","Metadata vừa liệt kê metronidazole là ví dụ, vừa yêu cầu loại trừ thuốc này. Cần xác minh định nghĩa."
+35,"Herbal Medications, Vitamins, Supplements","Bệnh nhân có dùng thảo dược, vitamin hoặc thực phẩm bổ sung (ví dụ tỏi, nhân sâm, sắt, kẽm): có = 1, không ghi nhận = 0, không rõ = NA.",float64,N/A,3792,66.53,2,uncertain,1,"Row 57: Herbal Medications, Vitamins, Supplements | Includes garlic, ginseng, danshen, donquai, vitamins, zinc, iron, magnesium, etc. yes = 1, not present = 0 or not known = NA | character",
+36,Target INR,"Chỉ số INR mục tiêu (International Normalized Ratio) của điều trị, hoặc NA nếu không rõ.",float64,không đơn vị (INR),4441,77.91,12,uncertain,1,Row 58: Target INR | Target International Normalized Ratio or NA | character | mg/week | Mass per Unit Time,"Verify unit: INR is dimensionless, Metadata gốc ghi nhầm đơn vị mg/week. INR thực tế không có đơn vị."
+37,Estimated Target INR Range Based on Indication,Khoảng INR mục tiêu ước tính dựa trên chỉ định điều trị khi chưa biết INR mục tiêu thực tế.,str,không đơn vị (INR),1882,33.02,7,uncertain,1,"Row 59: Estimated Target INR Range Based on Indication | If the target INR is not known, please give estimated target INR ranged based on Indication | number",
+38,Subject Reached Stable Dose of Warfarin,"Trạng thái bệnh nhân đã đạt liều Warfarin ổn định: có = 1, không = 0, không rõ = NA.",float64,N/A,49,0.86,2,exclude,1,"Row 60: Subject Reached Stable Dose of Warfarin | yes = 1, no = 0 or not known = NA | character",Filtering variable; exclude from X
+39,Therapeutic Dose of Warfarin,"Liều Warfarin điều trị được báo cáo, tính theo mg/tuần.",float64,mg/week,172,3.02,566,target_source,1,Row 61: Therapeutic Dose of Warfarin | Dose given in milligrams/week | number | mg/week | Mass per Unit Time,Target source; exclude from X
+40,INR on Reported Therapeutic Dose of Warfarin,Giá trị INR đo ở mức liều Warfarin điều trị được báo cáo trong bộ dữ liệu.,float64,không đơn vị (INR),732,12.84,289,exclude,1,Row 62: INR on Reported Therapeutic Dose of Warfarin | International Normalized Ratio on the Therapeutic Dose of Warfarin Reported Above | number,
+41,Current Smoker,"Tình trạng hút thuốc hiện tại: có = 1, không ghi nhận = 0, không rõ = NA.",float64,N/A,2480,43.51,2,uncertain,1,"Row 63: Current Smoker | yes = 1, not present = 0 or not known = NA | character",
+42,Cyp2C9 genotypes,"Các kiểu gen/alen của CYP2C9 được ghi nhận (*1, *2, *3, …, *13 theo Metadata).",str,N/A,133,2.33,11,uncertain,1,"Row 64: Cyp2C9 genotypes | *1, *2, *3, *4, *5, *6, *7, *8, *9, *10, *11, *12, or *13 (see https://www.pharmgkb.org/do/serve?objId=PA126&objCls=Gene for specifics of named alleles) | character",
+43,Genotyped QC Cyp2C9*2,Kết quả kiểu gen CYP2C9*2 dùng trong phần kiểm tra chất lượng genotyping (QC); alen *1 hoặc *2.,str,N/A,5222,91.61,3,uncertain,1,"Row 65: Genotyped QC Cyp2C9*2 | *1, *2, (see https://www.pharmgkb.org/do/serve?objId=PA126&objCls=Gene for specifics of named alleles) | character",
+44,Genotyped QC Cyp2C9*3,Kết quả kiểu gen CYP2C9*3 dùng trong phần kiểm tra chất lượng genotyping (QC); alen *1 hoặc *3.,str,N/A,5222,91.61,3,uncertain,1,"Row 66: Genotyped QC Cyp2C9*3 | *1, *3 (see https://www.pharmgkb.org/do/serve?objId=PA126&objCls=Gene for specifics of named alleles) | character",
+45,Combined QC CYP2C9,Kiểu gen CYP2C9 dạng diplotype được tổng hợp từ các phép đo QC cho *2 và *3.,str,N/A,5222,91.61,6,uncertain,1,"Row 67: Combined QC CYP2C9 | Combined separate genotypes for *2 and *3 into single CYP2C9 diplotypes with possible values *1/*1, *1/*2, *1/*3, *2/*2, *2/*3, *3/*3 | character",
+46,VKORC1 genotype: -1639 G>A (3673); chr16:31015190; rs9923231; C/T,Kiểu gen VKORC1 tại biến thể -1639 G>A (3673); các tổ hợp alen được quy định trong Metadata.,str,N/A,1654,29.02,3,uncertain,1,"Row 68: VKORC1 genotype: -1639 G>A (3673); chr16:31015190; rs9923231; C/T | A/A, A/G, G/G or NA | character",
+47,VKORC1 QC genotype: -1639 G>A (3673); chr16:31015190; rs9923231; C/T,Kết quả kiểu gen QC của VKORC1 tại biến thể -1639 G>A (3673); các tổ hợp alen được quy định trong Metadata.,str,N/A,5222,91.61,3,uncertain,1,"Row 69: VKORC1 QC genotype: -1639 G>A (3673); chr16:31015190; rs9923231; C/T | A/A, A/G, G/G or NA | character",
+48,VKORC1 genotype: 497T>G (5808); chr16:31013055; rs2884737; A/C,Kiểu gen VKORC1 tại biến thể 497T>G (5808); các tổ hợp alen được quy định trong Metadata.,str,N/A,4101,71.95,3,uncertain,1,"Row 70: VKORC1 genotype: 497T>G (5808); chr16:31013055; rs2884737; A/C | G/G, G/T, T/T or NA | character",
+49,VKORC1 QC genotype: 497T>G (5808); chr16:31013055; rs2884737; A/C,Kết quả kiểu gen QC của VKORC1 tại biến thể 497T>G (5808); các tổ hợp alen được quy định trong Metadata.,str,N/A,5222,91.61,3,uncertain,1,"Row 71: VKORC1 QC genotype: 497T>G (5808); chr16:31013055; rs2884737; A/C | G/G, G/T, T/T or NA | character",
+50,VKORC1 genotype: 1173 C>T(6484); chr16:31012379; rs9934438; A/G,Kiểu gen VKORC1 tại biến thể 1173 C>T(6484); các tổ hợp alen được quy định trong Metadata.,str,N/A,2337,41,3,uncertain,1,"Row 72: VKORC1 genotype: 1173 C>T(6484); chr16:31012379; rs9934438; A/G | C/C, C/T, T/T or NA | character",
+51,VKORC1 QC genotype: 1173 C>T(6484); chr16:31012379; rs9934438; A/G,Kết quả kiểu gen QC của VKORC1 tại biến thể 1173 C>T(6484); các tổ hợp alen được quy định trong Metadata.,str,N/A,5222,91.61,3,uncertain,1,"Row 73: VKORC1 QC genotype: 1173 C>T(6484); chr16:31012379; rs9934438; A/G | C/C, C/T, T/T or NA | character",
+52,VKORC1 genotype: 1542G>C (6853); chr16:31012010; rs8050894; C/G,Kiểu gen VKORC1 tại biến thể 1542G>C (6853); các tổ hợp alen được quy định trong Metadata.,str,N/A,2370,41.58,3,uncertain,1,"Row 74: VKORC1 genotype: 1542G>C (6853); chr16:31012010; rs8050894; C/G | C/C, C/G, G/G or NA (Note: alleles for 1542 G/C defined on coding strand, while rs8050894 alleles defined on non-coding strand) | character",
+53,VKORC1 QC genotype: 1542G>C (6853); chr16:31012010; rs8050894; C/G,Kết quả kiểu gen QC của VKORC1 tại biến thể 1542G>C (6853); các tổ hợp alen được quy định trong Metadata.,str,N/A,5222,91.61,3,uncertain,1,"Row 75: VKORC1 QC genotype: 1542G>C (6853); chr16:31012010; rs8050894; C/G | C/C, C/G, G/G or NA (Note: alleles for 1542 G/C defined on coding strand, while rs8050894 alleles defined on non-coding strand) | character",
+54,VKORC1 genotype: 3730 G>A (9041); chr16:31009822; rs7294;  A/G,Kiểu gen VKORC1 tại biến thể 3730 G>A (9041); các tổ hợp alen được quy định trong Metadata.,str,N/A,2576,45.19,3,uncertain,1,"Row 76: VKORC1 genotype: 3730 G>A (9041); chr16:31009822; rs7294;  A/G | A/A, A/G, G/G or NA | character",
+55,VKORC1 QC genotype: 3730 G>A (9041); chr16:31009822; rs7294;  A/G,Kết quả kiểu gen QC của VKORC1 tại biến thể 3730 G>A (9041); các tổ hợp alen được quy định trong Metadata.,str,N/A,5222,91.61,3,uncertain,1,"Row 77: VKORC1 QC genotype: 3730 G>A (9041); chr16:31009822; rs7294;  A/G | A/A, A/G, G/G or NA | character",
+56,VKORC1 genotype: 2255C>T (7566); chr16:31011297; rs2359612; A/G,Kiểu gen VKORC1 tại biến thể 2255C>T (7566); các tổ hợp alen được quy định trong Metadata.,str,N/A,3477,61,3,uncertain,1,"Row 78: VKORC1 genotype: 2255C>T (7566); chr16:31011297; rs2359612; A/G | C/C, C/T, T/T or NA | character",
+57,VKORC1 QC genotype: 2255C>T (7566); chr16:31011297; rs2359612; A/G,Kết quả kiểu gen QC của VKORC1 tại biến thể 2255C>T (7566); các tổ hợp alen được quy định trong Metadata.,str,N/A,5222,91.61,3,uncertain,1,"Row 79: VKORC1 QC genotype: 2255C>T (7566); chr16:31011297; rs2359612; A/G | C/C, C/T, T/T or NA | character",
+58,VKORC1 genotype: -4451 C>A (861); Chr16:31018002; rs17880887; A/C,Kiểu gen VKORC1 tại biến thể -4451 C>A (861); các tổ hợp alen được quy định trong Metadata.,str,N/A,5160,90.53,3,uncertain,1,"Row 80: VKORC1 genotype: -4451 C>A (861); Chr16:31018002; rs17880887; A/C | A/A, A/C, C/C or NA | character",
+59,VKORC1 QC genotype: -4451 C>A (861); Chr16:31018002; rs17880887; A/C,Kết quả kiểu gen QC của VKORC1 tại biến thể -4451 C>A (861); các tổ hợp alen được quy định trong Metadata.,str,N/A,5249,92.09,3,uncertain,1,"Row 81: VKORC1 QC genotype: -4451 C>A (861); Chr16:31018002; rs17880887; A/C | A/A, A/C, C/C or NA | character",
+60,CYP2C9 consensus,Kiểu gen CYP2C9 đồng thuận từ dữ liệu ban đầu và QC; quy tắc xử lý bất đồng và thiếu được định nghĩa trong Metadata.,str,N/A,144,2.53,11,uncertain,1,"Row 82: CYP2C9 consensus | Derived consensus between original and Combined QC genotypes as follows:
+If Original equals QC, use common value
+If Original equals NA, use QC
+If QC equals NA, use Original
+If Original is not equal to QC, set value to NA unless Original contains an allele not typed in QC, then use Original
+All subjects not included in QC genotyping retain Original value | character",
+61,VKORC1 -1639 consensus,"Kiểu gen VKORC1 đồng thuận tại biến thể -1639, tổng hợp từ dữ liệu ban đầu và QC theo quy tắc trong Metadata.",str,N/A,1499,26.3,3,uncertain,1,"Row 83: VKORC1 -1639 consensus | Derived consensus between original and QC genotypes as follows:
+If Originalequals QC, use common value
+If Original equals NA, use QC
+If QC equals NA, use Original
+If Original is not equal to QC, set value to NA
+All subjects not included in QC genotyping retain Original value | character",
+62,VKORC1 497 consensus,"Kiểu gen VKORC1 đồng thuận tại biến thể 497, tổng hợp từ dữ liệu ban đầu và QC theo quy tắc trong Metadata.",str,N/A,3817,66.96,3,uncertain,1,"Row 84: VKORC1 497 consensus | Derived consensus between original and QC genotypes as follows:
+If Original equals QC, use common value
+If Original equals NA, use QC
+If QC equals NA, use Original
+If Original is not equal to QC, set value to NA
+All subjects not included in QC genotyping retain Original value | character",
+63,VKORC1 1173 consensus,"Kiểu gen VKORC1 đồng thuận tại biến thể 1173, tổng hợp từ dữ liệu ban đầu và QC theo quy tắc trong Metadata.",str,N/A,2109,37,3,uncertain,1,"Row 85: VKORC1 1173 consensus | Derived consensus between original and QC genotypes as follows:
+If Original equals QC, use common value
+If Original equals NA, use QC
+If QC equals NA, use Original
+If Original is not equal to QC, set value to NA
+All subjects not included in QC genotyping retain Original value | character",
+64,VKORC1 1542 consensus,"Kiểu gen VKORC1 đồng thuận tại biến thể 1542, tổng hợp từ dữ liệu ban đầu và QC theo quy tắc trong Metadata.",str,N/A,2179,38.23,3,uncertain,1,"Row 86: VKORC1 1542 consensus | Derived consensus between original and QC genotypes as follows:
+If Original equals QC, use common value
+If Original equals NA, use QC
+If QC equals NA, use Original
+If Original is not equal to QC, set value to NA
+All subjects not included in QC genotyping retain Original value | character",
+65,VKORC1 3730 consensus,"Kiểu gen VKORC1 đồng thuận tại biến thể 3730, tổng hợp từ dữ liệu ban đầu và QC theo quy tắc trong Metadata.",str,N/A,2356,41.33,3,uncertain,1,"Row 87: VKORC1 3730 consensus | Derived consensus between original and QC genotypes as follows:
+If Original equals QC, use common value
+If Original equals NA, use QC
+If QC equals NA, use Original
+If Original is not equal to QC, set value to NA
+All subjects not included in QC genotyping retain Original value | character",
+66,VKORC1 2255 consensus,"Kiểu gen VKORC1 đồng thuận tại biến thể 2255, tổng hợp từ dữ liệu ban đầu và QC theo quy tắc trong Metadata.",str,N/A,3164,55.51,3,uncertain,1,"Row 88: VKORC1 2255 consensus | Derived consensus between original and QC genotypes as follows:
+If Original equals QC, use common value
+If Original equals NA, use QC
+If QC equals NA, use Original
+If Original is not equal to QC, set value to NA
+All subjects not included in QC genotyping retain Original value | character",
+67,VKORC1 -4451 consensus,"Kiểu gen VKORC1 đồng thuận tại biến thể -4451, tổng hợp từ dữ liệu ban đầu và QC theo quy tắc trong Metadata.",str,N/A,4788,84,3,uncertain,1,"Row 89: VKORC1 -4451 consensus | Derived consensus between original and QC genotypes as follows:
+If Original equals QC, use common value
+If Original equals NA, use QC
+If QC equals NA, use Original
+If Original is not equal to QC, set value to NA
+All subjects not included in QC genotyping retain Original value | character",
+68,Comments regarding Project Site Dataset,Nhận xét hoặc thông tin bổ sung do nhóm nghiên cứu/địa điểm thu thập đóng góp.,str,N/A,5543,97.25,58,uncertain,1,Row 90: Comments regarding Project Site Dataset | Any additional comments that the investigators felt should be included in the release of their data | character,

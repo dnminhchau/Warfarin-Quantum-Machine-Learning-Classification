@@ -1,0 +1,11 @@
+﻿check,count
+total_raw_records,5700
+stable_yes,5425
+stable_no,226
+stable_missing,49
+stable_invalid,0
+invalid_dose_overall,172
+invalid_dose_in_stable_patient,15
+eligible_preliminary,5410
+excluded_total,290
+high_dose_pending_review,21
