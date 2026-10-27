@@ -1,0 +1,5 @@
+partition,n,n_Low,n_Intermediate,n_High
+all_eligible,5410,1786,2936,688
+development,4328,1429,2349,550
+final_test,1082,357,587,138
+quantum_dev_pool,600,198,326,76

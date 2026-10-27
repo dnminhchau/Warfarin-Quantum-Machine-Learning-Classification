@@ -1,0 +1,32 @@
+{
+  "stage": "GĐ4",
+  "status": "LOCKED_BEFORE_MODEL_PERFORMANCE",
+  "final_test_policy": "Do not use for feature selection, model selection, or hyperparameter tuning.",
+  "approved_feature_count": 10,
+  "approved_features": [
+    "Gender",
+    "Age",
+    "Height (cm)",
+    "Weight (kg)",
+    "Diabetes",
+    "Congestive Heart Failure and/or Cardiomyopathy",
+    "Valve Replacement",
+    "Current Smoker",
+    "CYP2C9 consensus",
+    "VKORC1 -1639 consensus"
+  ],
+  "final_test_fraction": 0.2,
+  "quantum_dev_pool_size": 600,
+  "n_splits": 5,
+  "seeds": {
+    "split_seed": 42,
+    "qdev_seed": 42,
+    "cv_seed": 42
+  },
+  "files": {
+    "final_split.csv": "387400cc322c783bd4ea7066ba30804a8daabdcebf9a3806984606ce75158b34",
+    "quantum_dev_pool.csv": "74d3ee47da5498ebbdd28a201bde71e3f1cc2e6bc3b8dd2dcacd32b76216a8c3",
+    "quantum_dev_folds.csv": "63b5d1d49b18c26999eba5325870e70ef652a0a27de011edb917d62a61a3c5e9",
+    "development_folds.csv": "7ff47a652745c3b06a45bf4fad34a481e31dd29b46d36dadd32cf6389dab255a"
+  }
+}

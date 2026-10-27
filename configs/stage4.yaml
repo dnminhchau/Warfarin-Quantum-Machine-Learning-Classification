@@ -1,0 +1,11 @@
+schema_version: '0.1'
+final_test_fraction: 0.20
+quantum_dev_pool_size: 600
+n_splits: 5
+split_seed: 42
+qdev_seed: 42
+cv_seed: 42
+class_order:
+  - Low
+  - Intermediate
+  - High
