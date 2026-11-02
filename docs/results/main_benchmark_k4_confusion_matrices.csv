@@ -1,0 +1,145 @@
+experiment,model,classification,actual,predicted,count
+E01,LR,primary_original_cv,Low,Low,76
+E01,LR,primary_original_cv,Low,Intermediate,122
+E01,LR,primary_original_cv,Low,High,0
+E01,LR,primary_original_cv,Intermediate,Low,50
+E01,LR,primary_original_cv,Intermediate,Intermediate,276
+E01,LR,primary_original_cv,Intermediate,High,0
+E01,LR,primary_original_cv,High,Low,3
+E01,LR,primary_original_cv,High,Intermediate,73
+E01,LR,primary_original_cv,High,High,0
+E01,SVM,primary_original_cv,Low,Low,76
+E01,SVM,primary_original_cv,Low,Intermediate,122
+E01,SVM,primary_original_cv,Low,High,0
+E01,SVM,primary_original_cv,Intermediate,Low,34
+E01,SVM,primary_original_cv,Intermediate,Intermediate,292
+E01,SVM,primary_original_cv,Intermediate,High,0
+E01,SVM,primary_original_cv,High,Low,5
+E01,SVM,primary_original_cv,High,Intermediate,71
+E01,SVM,primary_original_cv,High,High,0
+E01,MLP,primary_original_cv,Low,Low,44
+E01,MLP,primary_original_cv,Low,Intermediate,154
+E01,MLP,primary_original_cv,Low,High,0
+E01,MLP,primary_original_cv,Intermediate,Low,22
+E01,MLP,primary_original_cv,Intermediate,Intermediate,304
+E01,MLP,primary_original_cv,Intermediate,High,0
+E01,MLP,primary_original_cv,High,Low,3
+E01,MLP,primary_original_cv,High,Intermediate,73
+E01,MLP,primary_original_cv,High,High,0
+E01,QSVC (C=1),primary_original_cv,Low,Low,64
+E01,QSVC (C=1),primary_original_cv,Low,Intermediate,134
+E01,QSVC (C=1),primary_original_cv,Low,High,0
+E01,QSVC (C=1),primary_original_cv,Intermediate,Low,51
+E01,QSVC (C=1),primary_original_cv,Intermediate,Intermediate,274
+E01,QSVC (C=1),primary_original_cv,Intermediate,High,1
+E01,QSVC (C=1),primary_original_cv,High,Low,12
+E01,QSVC (C=1),primary_original_cv,High,Intermediate,64
+E01,QSVC (C=1),primary_original_cv,High,High,0
+E01,VQC (seed=42),primary_original_cv,Low,Low,81
+E01,VQC (seed=42),primary_original_cv,Low,Intermediate,67
+E01,VQC (seed=42),primary_original_cv,Low,High,50
+E01,VQC (seed=42),primary_original_cv,Intermediate,Low,105
+E01,VQC (seed=42),primary_original_cv,Intermediate,Intermediate,124
+E01,VQC (seed=42),primary_original_cv,Intermediate,High,97
+E01,VQC (seed=42),primary_original_cv,High,Low,25
+E01,VQC (seed=42),primary_original_cv,High,Intermediate,26
+E01,VQC (seed=42),primary_original_cv,High,High,25
+E01,LR-balanced,imbalance_diagnostic,Low,Low,127
+E01,LR-balanced,imbalance_diagnostic,Low,Intermediate,39
+E01,LR-balanced,imbalance_diagnostic,Low,High,32
+E01,LR-balanced,imbalance_diagnostic,Intermediate,Low,117
+E01,LR-balanced,imbalance_diagnostic,Intermediate,Intermediate,83
+E01,LR-balanced,imbalance_diagnostic,Intermediate,High,126
+E01,LR-balanced,imbalance_diagnostic,High,Low,21
+E01,LR-balanced,imbalance_diagnostic,High,Intermediate,18
+E01,LR-balanced,imbalance_diagnostic,High,High,37
+E01,SVM-balanced,imbalance_diagnostic,Low,Low,115
+E01,SVM-balanced,imbalance_diagnostic,Low,Intermediate,51
+E01,SVM-balanced,imbalance_diagnostic,Low,High,32
+E01,SVM-balanced,imbalance_diagnostic,Intermediate,Low,79
+E01,SVM-balanced,imbalance_diagnostic,Intermediate,Intermediate,113
+E01,SVM-balanced,imbalance_diagnostic,Intermediate,High,134
+E01,SVM-balanced,imbalance_diagnostic,High,Low,16
+E01,SVM-balanced,imbalance_diagnostic,High,Intermediate,24
+E01,SVM-balanced,imbalance_diagnostic,High,High,36
+E01,MLP-weighted,imbalance_diagnostic,Low,Low,105
+E01,MLP-weighted,imbalance_diagnostic,Low,Intermediate,65
+E01,MLP-weighted,imbalance_diagnostic,Low,High,28
+E01,MLP-weighted,imbalance_diagnostic,Intermediate,Low,104
+E01,MLP-weighted,imbalance_diagnostic,Intermediate,Intermediate,125
+E01,MLP-weighted,imbalance_diagnostic,Intermediate,High,97
+E01,MLP-weighted,imbalance_diagnostic,High,Low,19
+E01,MLP-weighted,imbalance_diagnostic,High,Intermediate,40
+E01,MLP-weighted,imbalance_diagnostic,High,High,17
+E01,QSVC-balanced (C=1),imbalance_diagnostic,Low,Low,84
+E01,QSVC-balanced (C=1),imbalance_diagnostic,Low,Intermediate,58
+E01,QSVC-balanced (C=1),imbalance_diagnostic,Low,High,56
+E01,QSVC-balanced (C=1),imbalance_diagnostic,Intermediate,Low,94
+E01,QSVC-balanced (C=1),imbalance_diagnostic,Intermediate,Intermediate,137
+E01,QSVC-balanced (C=1),imbalance_diagnostic,Intermediate,High,95
+E01,QSVC-balanced (C=1),imbalance_diagnostic,High,Low,15
+E01,QSVC-balanced (C=1),imbalance_diagnostic,High,Intermediate,32
+E01,QSVC-balanced (C=1),imbalance_diagnostic,High,High,29
+E01,QSVC (C=0.1),EXPLORATORY_POST_BASELINE,Low,Low,0
+E01,QSVC (C=0.1),EXPLORATORY_POST_BASELINE,Low,Intermediate,198
+E01,QSVC (C=0.1),EXPLORATORY_POST_BASELINE,Low,High,0
+E01,QSVC (C=0.1),EXPLORATORY_POST_BASELINE,Intermediate,Low,0
+E01,QSVC (C=0.1),EXPLORATORY_POST_BASELINE,Intermediate,Intermediate,326
+E01,QSVC (C=0.1),EXPLORATORY_POST_BASELINE,Intermediate,High,0
+E01,QSVC (C=0.1),EXPLORATORY_POST_BASELINE,High,Low,0
+E01,QSVC (C=0.1),EXPLORATORY_POST_BASELINE,High,Intermediate,76
+E01,QSVC (C=0.1),EXPLORATORY_POST_BASELINE,High,High,0
+E01,QSVC (C=10),EXPLORATORY_POST_BASELINE,Low,Low,76
+E01,QSVC (C=10),EXPLORATORY_POST_BASELINE,Low,Intermediate,101
+E01,QSVC (C=10),EXPLORATORY_POST_BASELINE,Low,High,21
+E01,QSVC (C=10),EXPLORATORY_POST_BASELINE,Intermediate,Low,75
+E01,QSVC (C=10),EXPLORATORY_POST_BASELINE,Intermediate,Intermediate,212
+E01,QSVC (C=10),EXPLORATORY_POST_BASELINE,Intermediate,High,39
+E01,QSVC (C=10),EXPLORATORY_POST_BASELINE,High,Low,12
+E01,QSVC (C=10),EXPLORATORY_POST_BASELINE,High,Intermediate,47
+E01,QSVC (C=10),EXPLORATORY_POST_BASELINE,High,High,17
+E01,VQC (seed=7),EXPLORATORY_POST_BASELINE,Low,Low,64
+E01,VQC (seed=7),EXPLORATORY_POST_BASELINE,Low,Intermediate,75
+E01,VQC (seed=7),EXPLORATORY_POST_BASELINE,Low,High,59
+E01,VQC (seed=7),EXPLORATORY_POST_BASELINE,Intermediate,Low,95
+E01,VQC (seed=7),EXPLORATORY_POST_BASELINE,Intermediate,Intermediate,117
+E01,VQC (seed=7),EXPLORATORY_POST_BASELINE,Intermediate,High,114
+E01,VQC (seed=7),EXPLORATORY_POST_BASELINE,High,Low,25
+E01,VQC (seed=7),EXPLORATORY_POST_BASELINE,High,Intermediate,26
+E01,VQC (seed=7),EXPLORATORY_POST_BASELINE,High,High,25
+E01,VQC (seed=123),EXPLORATORY_POST_BASELINE,Low,Low,50
+E01,VQC (seed=123),EXPLORATORY_POST_BASELINE,Low,Intermediate,87
+E01,VQC (seed=123),EXPLORATORY_POST_BASELINE,Low,High,61
+E01,VQC (seed=123),EXPLORATORY_POST_BASELINE,Intermediate,Low,91
+E01,VQC (seed=123),EXPLORATORY_POST_BASELINE,Intermediate,Intermediate,133
+E01,VQC (seed=123),EXPLORATORY_POST_BASELINE,Intermediate,High,102
+E01,VQC (seed=123),EXPLORATORY_POST_BASELINE,High,Low,26
+E01,VQC (seed=123),EXPLORATORY_POST_BASELINE,High,Intermediate,28
+E01,VQC (seed=123),EXPLORATORY_POST_BASELINE,High,High,22
+E02,LR,strong_classical_reference,Low,Low,862
+E02,LR,strong_classical_reference,Low,Intermediate,557
+E02,LR,strong_classical_reference,Low,High,10
+E02,LR,strong_classical_reference,Intermediate,Low,307
+E02,LR,strong_classical_reference,Intermediate,Intermediate,1948
+E02,LR,strong_classical_reference,Intermediate,High,94
+E02,LR,strong_classical_reference,High,Low,8
+E02,LR,strong_classical_reference,High,Intermediate,401
+E02,LR,strong_classical_reference,High,High,141
+E02,SVM,strong_classical_reference,Low,Low,827
+E02,SVM,strong_classical_reference,Low,Intermediate,593
+E02,SVM,strong_classical_reference,Low,High,9
+E02,SVM,strong_classical_reference,Intermediate,Low,315
+E02,SVM,strong_classical_reference,Intermediate,Intermediate,1995
+E02,SVM,strong_classical_reference,Intermediate,High,39
+E02,SVM,strong_classical_reference,High,Low,8
+E02,SVM,strong_classical_reference,High,Intermediate,471
+E02,SVM,strong_classical_reference,High,High,71
+E02,MLP,strong_classical_reference,Low,Low,870
+E02,MLP,strong_classical_reference,Low,Intermediate,554
+E02,MLP,strong_classical_reference,Low,High,5
+E02,MLP,strong_classical_reference,Intermediate,Low,362
+E02,MLP,strong_classical_reference,Intermediate,Intermediate,1932
+E02,MLP,strong_classical_reference,Intermediate,High,55
+E02,MLP,strong_classical_reference,High,Low,8
+E02,MLP,strong_classical_reference,High,Intermediate,455
+E02,MLP,strong_classical_reference,High,High,87

@@ -1,0 +1,40 @@
+{
+  "experiment": "E02_QSVC_k4_balanced",
+  "dataset": "quantum_dev_pool_600",
+  "folds": 5,
+  "pca_k": 4,
+  "feature_map": "zz_feature_map",
+  "reps": 2,
+  "entanglement": "linear",
+  "kernel": "FidelityStatevectorKernel",
+  "shots": null,
+  "C": 1.0,
+  "class_weight": "balanced",
+  "features": [
+    "Gender",
+    "Age",
+    "Height (cm)",
+    "Weight (kg)",
+    "Diabetes",
+    "Congestive Heart Failure and/or Cardiomyopathy",
+    "Valve Replacement",
+    "Current Smoker",
+    "CYP2C9 consensus",
+    "VKORC1 -1639 consensus"
+  ],
+  "preprocessing": "fit_on_training_fold",
+  "quantum_scaling": "MinMax_0_pi_then_clip",
+  "final_test_used": false,
+  "versions": {
+    "qiskit": "2.6.0",
+    "qiskit-machine-learning": "0.9.1",
+    "scikit-learn": "1.9.1",
+    "numpy": "2.5.4",
+    "pandas": "3.1.0"
+  },
+  "checksums": {
+    "split_manifest": "cf965953edaf680569ff6dfacb435ab631aad28a440a1dfaa732bf4cef757217",
+    "feature_policy": "33798c3520e4ed9851c94c8a945d8f19f75a969d6f1904e182a8911c77bfce8c",
+    "script": "5be1fb69f1a8d8222915168d684d72cd27489fd9740b79b78c6684b817081b54"
+  }
+}

@@ -201,6 +201,26 @@ def main():
     split.loc[test_pos, "partition"] = "final_test"
     split = split.sort_values("raw_row_index").reset_index(drop=True)
     final_split_path = SPLIT_DIR / "final_split.csv"
+    # Protect locked G?4 split artifacts from accidental overwrite.
+    protected_paths = [
+        SPLIT_DIR / "final_split.csv",
+        SPLIT_DIR / "quantum_dev_pool.csv",
+        SPLIT_DIR / "quantum_dev_folds.csv",
+        SPLIT_DIR / "development_folds.csv",
+        SPLIT_DIR / "split_manifest.json",
+        RESULTS_DIR / "stage4_split_summary.csv",
+    ]
+
+    existing_paths = [
+        p for p in protected_paths if p.exists()
+    ]
+
+    if existing_paths:
+        raise FileExistsError(
+            "Existing G?4 split files; refusing to overwrite: "
+            + ", ".join(str(p) for p in existing_paths)
+        )
+
     split.to_csv(final_split_path, index=False, encoding="utf-8")
 
     qdev = pd.DataFrame(
