@@ -1,0 +1,11 @@
+feature_encoded,mutual_info
+VKORC1_A,0.1198
+Weight,0.0808
+Height,0.0699
+Smoker,0.0552
+AgeDecade,0.0431
+Diabetes,0.0276
+CYP2C9_AS,0.0207
+Valve,0.0056
+CHF,0.0037
+Male,0.0024

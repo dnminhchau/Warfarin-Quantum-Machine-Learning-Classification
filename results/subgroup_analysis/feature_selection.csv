@@ -1,0 +1,7 @@
+feature,RFE_rank(1=best),forward_/5,mutual_info,perm_importance
+VKORC1,1.0,5,0.1434,0.1484
+Age,2.0,5,0.042,0.0378
+CYP2C9,3.4,5,0.0155,0.0415
+Weight,3.6,4,0.0857,0.0159
+Height,5.0,0,0.0619,0.004
+Male,6.0,1,0.0077,0.0039

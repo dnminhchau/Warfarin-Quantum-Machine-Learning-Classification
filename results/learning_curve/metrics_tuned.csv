@@ -1,0 +1,126 @@
+model,train_n,repeat,macro_f1,best_params
+LR,50,0,0.5132898124567472,{'model__C': 10}
+SVM,50,0,0.5065019863520551,"{'model__C': 1, 'model__gamma': 'scale'}"
+HGB,50,0,0.3868403541530428,"{'model__learning_rate': 0.05, 'model__max_depth': 2}"
+QSVC,50,0,0.4455810026964384,"{'model__C': 10, 'model__bandwidth': 0.1}"
+QSVC-product,50,0,0.5324677119344067,"{'model__C': 1, 'model__bandwidth': 0.5}"
+LR,100,0,0.5401453930985157,{'model__C': 100}
+SVM,100,0,0.49064128672936635,"{'model__C': 1, 'model__gamma': 'scale'}"
+HGB,100,0,0.526637705913124,"{'model__learning_rate': 0.1, 'model__max_depth': 2}"
+QSVC,100,0,0.44048875994195474,"{'model__C': 1, 'model__bandwidth': 0.5}"
+QSVC-product,100,0,0.48547162443461495,"{'model__C': 10, 'model__bandwidth': 0.5}"
+LR,200,0,0.5455197867718669,{'model__C': 10}
+SVM,200,0,0.5494574408637715,"{'model__C': 10, 'model__gamma': 0.01}"
+HGB,200,0,0.5509841397499631,"{'model__learning_rate': 0.1, 'model__max_depth': 3}"
+QSVC,200,0,0.5090792400769361,"{'model__C': 1, 'model__bandwidth': 0.5}"
+QSVC-product,200,0,0.5236533720464419,"{'model__C': 10, 'model__bandwidth': 0.5}"
+LR,400,0,0.5488571146997283,{'model__C': 10}
+SVM,400,0,0.5594256292664764,"{'model__C': 10, 'model__gamma': 0.01}"
+HGB,400,0,0.5366507008848707,"{'model__learning_rate': 0.05, 'model__max_depth': 3}"
+QSVC,400,0,0.5069845368334862,"{'model__C': 10, 'model__bandwidth': 0.25}"
+QSVC-product,400,0,0.5674462599097524,"{'model__C': 10, 'model__bandwidth': 0.25}"
+LR,600,0,0.5509760665939636,{'model__C': 1}
+SVM,600,0,0.549432937369585,"{'model__C': 10, 'model__gamma': 0.01}"
+HGB,600,0,0.5398208792456333,"{'model__learning_rate': 0.1, 'model__max_depth': 3}"
+QSVC,600,0,0.4909147025913569,"{'model__C': 10, 'model__bandwidth': 0.5}"
+QSVC-product,600,0,0.558670995064482,"{'model__C': 10, 'model__bandwidth': 0.1}"
+LR,50,1,0.5078646094557461,{'model__C': 1}
+SVM,50,1,0.4803439755976289,"{'model__C': 10, 'model__gamma': 'scale'}"
+HGB,50,1,0.3705094797090158,"{'model__learning_rate': 0.05, 'model__max_depth': 2}"
+QSVC,50,1,0.32542326266899213,"{'model__C': 1, 'model__bandwidth': 1.0}"
+QSVC-product,50,1,0.36094878450139145,"{'model__C': 10, 'model__bandwidth': 0.05}"
+LR,100,1,0.540447585106009,{'model__C': 1}
+SVM,100,1,0.479565211268649,"{'model__C': 10, 'model__gamma': 1.0}"
+HGB,100,1,0.48869322379762686,"{'model__learning_rate': 0.05, 'model__max_depth': 2}"
+QSVC,100,1,0.4745097777995147,"{'model__C': 10, 'model__bandwidth': 0.5}"
+QSVC-product,100,1,0.5559656929128781,"{'model__C': 10, 'model__bandwidth': 0.25}"
+LR,200,1,0.5445532964938012,{'model__C': 10}
+SVM,200,1,0.49691652687419535,"{'model__C': 1, 'model__gamma': 1.0}"
+HGB,200,1,0.49458078071834793,"{'model__learning_rate': 0.05, 'model__max_depth': 3}"
+QSVC,200,1,0.4813043761053208,"{'model__C': 1, 'model__bandwidth': 0.25}"
+QSVC-product,200,1,0.497438931590636,"{'model__C': 10, 'model__bandwidth': 0.5}"
+LR,400,1,0.5452927161050988,{'model__C': 100}
+SVM,400,1,0.5318199713221595,"{'model__C': 1, 'model__gamma': 0.01}"
+HGB,400,1,0.5261267297478446,"{'model__learning_rate': 0.05, 'model__max_depth': 3}"
+QSVC,400,1,0.5224853302823466,"{'model__C': 10, 'model__bandwidth': 0.05}"
+QSVC-product,400,1,0.5538441070772266,"{'model__C': 1, 'model__bandwidth': 0.25}"
+LR,600,1,0.5509760665939636,{'model__C': 1}
+SVM,600,1,0.549432937369585,"{'model__C': 10, 'model__gamma': 0.01}"
+HGB,600,1,0.5398208792456333,"{'model__learning_rate': 0.1, 'model__max_depth': 3}"
+QSVC,600,1,0.4909147025913569,"{'model__C': 10, 'model__bandwidth': 0.5}"
+QSVC-product,600,1,0.558670995064482,"{'model__C': 10, 'model__bandwidth': 0.1}"
+LR,50,2,0.559891876151084,{'model__C': 10}
+SVM,50,2,0.5266394939169808,"{'model__C': 10, 'model__gamma': 0.1}"
+HGB,50,2,0.4057219983163794,"{'model__learning_rate': 0.05, 'model__max_depth': 2}"
+QSVC,50,2,0.43495389320340355,"{'model__C': 10, 'model__bandwidth': 0.5}"
+QSVC-product,50,2,0.525798862893396,"{'model__C': 10, 'model__bandwidth': 0.25}"
+LR,100,2,0.5803875982358545,{'model__C': 100}
+SVM,100,2,0.5395730140461749,"{'model__C': 1, 'model__gamma': 'scale'}"
+HGB,100,2,0.5186980022038085,"{'model__learning_rate': 0.05, 'model__max_depth': 2}"
+QSVC,100,2,0.4887728255583859,"{'model__C': 1, 'model__bandwidth': 0.25}"
+QSVC-product,100,2,0.5605893611775129,"{'model__C': 10, 'model__bandwidth': 0.25}"
+LR,200,2,0.5466474270753531,{'model__C': 10}
+SVM,200,2,0.48416204750154285,"{'model__C': 1, 'model__gamma': 1.0}"
+HGB,200,2,0.523120337669179,"{'model__learning_rate': 0.1, 'model__max_depth': 3}"
+QSVC,200,2,0.46247707436768076,"{'model__C': 10, 'model__bandwidth': 0.1}"
+QSVC-product,200,2,0.4931204775198359,"{'model__C': 10, 'model__bandwidth': 0.5}"
+LR,400,2,0.5490406209924085,{'model__C': 0.1}
+SVM,400,2,0.5429577286868282,"{'model__C': 10, 'model__gamma': 0.01}"
+HGB,400,2,0.5247892662584199,"{'model__learning_rate': 0.1, 'model__max_depth': 3}"
+QSVC,400,2,0.5341038768919147,"{'model__C': 10, 'model__bandwidth': 0.05}"
+QSVC-product,400,2,0.5203138159105236,"{'model__C': 0.1, 'model__bandwidth': 0.5}"
+LR,600,2,0.5509760665939636,{'model__C': 1}
+SVM,600,2,0.549432937369585,"{'model__C': 10, 'model__gamma': 0.01}"
+HGB,600,2,0.5398208792456333,"{'model__learning_rate': 0.1, 'model__max_depth': 3}"
+QSVC,600,2,0.4909147025913569,"{'model__C': 10, 'model__bandwidth': 0.5}"
+QSVC-product,600,2,0.558670995064482,"{'model__C': 10, 'model__bandwidth': 0.1}"
+LR,50,3,0.5318575892266183,{'model__C': 0.1}
+SVM,50,3,0.5428142942981989,"{'model__C': 10, 'model__gamma': 0.01}"
+HGB,50,3,0.42973148778857073,"{'model__learning_rate': 0.05, 'model__max_depth': 2}"
+QSVC,50,3,0.4505352527337936,"{'model__C': 10, 'model__bandwidth': 0.05}"
+QSVC-product,50,3,0.5416236324565349,"{'model__C': 1, 'model__bandwidth': 0.25}"
+LR,100,3,0.5727253166788676,{'model__C': 10}
+SVM,100,3,0.5521309490527564,"{'model__C': 10, 'model__gamma': 0.01}"
+HGB,100,3,0.5452886043608993,"{'model__learning_rate': 0.1, 'model__max_depth': 2}"
+QSVC,100,3,0.4548729176804072,"{'model__C': 10, 'model__bandwidth': 0.25}"
+QSVC-product,100,3,0.5329605096162319,"{'model__C': 10, 'model__bandwidth': 0.1}"
+LR,200,3,0.5551214086149646,{'model__C': 10}
+SVM,200,3,0.5436064941986514,"{'model__C': 1, 'model__gamma': 0.1}"
+HGB,200,3,0.5411571916838738,"{'model__learning_rate': 0.1, 'model__max_depth': 3}"
+QSVC,200,3,0.4842101966738297,"{'model__C': 10, 'model__bandwidth': 0.1}"
+QSVC-product,200,3,0.5223808454758331,"{'model__C': 10, 'model__bandwidth': 0.1}"
+LR,400,3,0.5597764221131561,{'model__C': 10}
+SVM,400,3,0.5346057531865772,"{'model__C': 1, 'model__gamma': 0.1}"
+HGB,400,3,0.5279701102176276,"{'model__learning_rate': 0.05, 'model__max_depth': 3}"
+QSVC,400,3,0.5360955659811939,"{'model__C': 10, 'model__bandwidth': 0.05}"
+QSVC-product,400,3,0.5356651660508944,"{'model__C': 10, 'model__bandwidth': 0.05}"
+LR,600,3,0.5509760665939636,{'model__C': 1}
+SVM,600,3,0.549432937369585,"{'model__C': 10, 'model__gamma': 0.01}"
+HGB,600,3,0.5398208792456333,"{'model__learning_rate': 0.1, 'model__max_depth': 3}"
+QSVC,600,3,0.4909147025913569,"{'model__C': 10, 'model__bandwidth': 0.5}"
+QSVC-product,600,3,0.558670995064482,"{'model__C': 10, 'model__bandwidth': 0.1}"
+LR,50,4,0.5057866275937267,{'model__C': 10}
+SVM,50,4,0.4472632043287892,"{'model__C': 10, 'model__gamma': 1.0}"
+HGB,50,4,0.386471594051448,"{'model__learning_rate': 0.05, 'model__max_depth': 2}"
+QSVC,50,4,0.4294457709530406,"{'model__C': 10, 'model__bandwidth': 0.25}"
+QSVC-product,50,4,0.520960229290259,"{'model__C': 10, 'model__bandwidth': 0.5}"
+LR,100,4,0.5325943137082448,{'model__C': 10}
+SVM,100,4,0.5304125895263287,"{'model__C': 10, 'model__gamma': 0.01}"
+HGB,100,4,0.49490456694402835,"{'model__learning_rate': 0.1, 'model__max_depth': 2}"
+QSVC,100,4,0.5181366679037397,"{'model__C': 10, 'model__bandwidth': 0.05}"
+QSVC-product,100,4,0.5487311824558069,"{'model__C': 10, 'model__bandwidth': 0.1}"
+LR,200,4,0.5347142415537296,{'model__C': 1}
+SVM,200,4,0.5348491759956754,"{'model__C': 1, 'model__gamma': 0.1}"
+HGB,200,4,0.5110254038856419,"{'model__learning_rate': 0.1, 'model__max_depth': 2}"
+QSVC,200,4,0.4579918391102724,"{'model__C': 10, 'model__bandwidth': 0.5}"
+QSVC-product,200,4,0.5254126398611169,"{'model__C': 10, 'model__bandwidth': 0.1}"
+LR,400,4,0.5429038396059621,{'model__C': 1}
+SVM,400,4,0.5425584116837804,"{'model__C': 10, 'model__gamma': 0.01}"
+HGB,400,4,0.5142317455164614,"{'model__learning_rate': 0.05, 'model__max_depth': 2}"
+QSVC,400,4,0.4962853766816639,"{'model__C': 1, 'model__bandwidth': 0.5}"
+QSVC-product,400,4,0.5580413077847362,"{'model__C': 10, 'model__bandwidth': 0.1}"
+LR,600,4,0.5509760665939636,{'model__C': 1}
+SVM,600,4,0.549432937369585,"{'model__C': 10, 'model__gamma': 0.01}"
+HGB,600,4,0.5398208792456333,"{'model__learning_rate': 0.1, 'model__max_depth': 3}"
+QSVC,600,4,0.4909147025913569,"{'model__C': 10, 'model__bandwidth': 0.5}"
+QSVC-product,600,4,0.558670995064482,"{'model__C': 10, 'model__bandwidth': 0.1}"

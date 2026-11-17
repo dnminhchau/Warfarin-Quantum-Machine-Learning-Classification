@@ -1,0 +1,115 @@
+{
+  "created_utc": "2026-11-07T08:44:35.128739+00:00",
+  "amendment": "docs/protocol_amendment_v2.md",
+  "pool": "qdev600",
+  "representation": "pca",
+  "k": 4,
+  "models": [
+    "Dummy",
+    "LR",
+    "SVM",
+    "MLP",
+    "HGB",
+    "QSVC",
+    "QSVC-product"
+  ],
+  "grids": {
+    "Dummy": {},
+    "LR": {
+      "C": [
+        "0.01",
+        "0.1",
+        "1",
+        "10",
+        "100"
+      ]
+    },
+    "SVM": {
+      "C": [
+        "0.1",
+        "1",
+        "10"
+      ],
+      "gamma": [
+        "0.01",
+        "0.1",
+        "scale",
+        "1.0",
+        "10.0"
+      ]
+    },
+    "MLP": {
+      "hidden_layer_sizes": [
+        "(16,)",
+        "(32, 16)"
+      ],
+      "alpha": [
+        "0.0001",
+        "0.01"
+      ]
+    },
+    "HGB": {
+      "max_depth": [
+        "2",
+        "3"
+      ],
+      "learning_rate": [
+        "0.05",
+        "0.1"
+      ]
+    },
+    "QSVC": {
+      "bandwidth": [
+        "0.05",
+        "0.1",
+        "0.25",
+        "0.5",
+        "1.0"
+      ],
+      "C": [
+        "0.1",
+        "1",
+        "10"
+      ]
+    },
+    "QSVC-product": {
+      "bandwidth": [
+        "0.05",
+        "0.1",
+        "0.25",
+        "0.5",
+        "1.0"
+      ],
+      "C": [
+        "0.1",
+        "1",
+        "10"
+      ]
+    }
+  },
+  "vqc_seeds": [
+    0
+  ],
+  "inner_splits": 3,
+  "outer_folds": "locked",
+  "class_order": [
+    "Low",
+    "Intermediate",
+    "High"
+  ],
+  "final_test_used": false,
+  "versions": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v310-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "qiskit": "2.6.2",
+    "qiskit-machine-learning": "0.9.1"
+  },
+  "sha256": {
+    "split_manifest": "da467a062c9e388ffcdb8ceb1f3538c9e95719c797846e92ec4a443f196db28f",
+    "feature_policy": "ce5ab2d27e7ff4506aed785e7f4b40a85b8c8d3ef76cf0171f4b07197cca17e3"
+  }
+}

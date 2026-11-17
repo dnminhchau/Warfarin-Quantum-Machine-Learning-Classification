@@ -1,0 +1,11 @@
+feature_raw,perm_drop_macro_f1,perm_sd
+VKORC1 -1639 consensus,0.1191,0.0149
+CYP2C9 consensus,0.0416,0.0102
+Age,0.0345,0.019
+Weight (kg),0.0289,0.0105
+Valve Replacement,0.0053,0.0048
+Gender,0.0044,0.0037
+Congestive Heart Failure and/or Cardiomyopathy,0.0028,0.0041
+Current Smoker,0.0012,0.0032
+Diabetes,-0.0004,0.0037
+Height (cm),-0.0007,0.0117
