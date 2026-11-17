@@ -1,0 +1,20 @@
+{
+  "LR_vs_QSVC-product": {
+    "mean_diff": 0.005695888140415615,
+    "ci_low": -0.011504951296869704,
+    "ci_high": 0.022289987597172264,
+    "significant": false
+  },
+  "QSVC-product_vs_QSVC": {
+    "mean_diff": 0.013501795904512838,
+    "ci_low": 0.0025872661228849903,
+    "ci_high": 0.023980089021717728,
+    "significant": true
+  },
+  "QSVC-product_vs_SVM": {
+    "mean_diff": -0.0012851183075557895,
+    "ci_low": -0.01350965425230371,
+    "ci_high": 0.010385041378726074,
+    "significant": false
+  }
+}

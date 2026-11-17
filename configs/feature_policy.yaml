@@ -1,9 +1,5 @@
 schema_version: '0.1'
 policy_status: RESEARCH_APPROVED_WITH_TEMPORAL_ASSUMPTION
-prediction_contract: docs/research_decisions.md
-temporal_conclusion: docs/research_decisions.md
-source_review: docs/reference/feature_policy_review.csv
-temporal_review: docs/reference/temporal_evidence_review.csv
 training_allowed: true
 approved_X_columns:
 - Gender

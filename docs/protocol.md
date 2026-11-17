@@ -1,167 +1,62 @@
-# Warfarin QML — Experimental Protocol
+# Thiết kế nghiên cứu
 
-## 1. Objective
+Tài liệu ghi lại kế hoạch thí nghiệm được lập ngày 08/11/2026, trước khi chạy bộ thí nghiệm chính,
+và các điểm thực tế đã thay đổi so với kế hoạch.
 
-Xây dựng giao thức thực nghiệm thống nhất để đánh giá và so sánh các mô hình Classical Machine Learning và Quantum Machine Learning trên IWPC dataset.
+## 1. Lý do điều chỉnh so với thiết kế ban đầu
 
-Đảm bảo các thí nghiệm công bằng, có khả năng tái lập và tránh Data Leakage.
+Các vấn đề phát hiện trên tập Development ở thiết kế ban đầu:
 
-## 2. Dataset and Target
-
-- Dataset: International Warfarin Pharmacogenetics Consortium (IWPC).
-- Input X: Các đặc trưng lâm sàng và di truyền hợp lệ sau khi kiểm tra Data Leakage.
-- Target y: Nhóm liều Warfarin ổn định.
-- Classification task: Multiclass Classification gồm ba lớp.
-
-**Label Definition:**
-
-| Label | Therapeutic Dose |
+| Vấn đề | Bằng chứng |
 |---|---|
-| Low | ≤21 mg/week |
-| Intermediate | >21 và <49 mg/week |
-| High | ≥49 mg/week |
+| PCA k = 4 trên 40 cột one-hot mất nhiều thông tin | Chỉ giữ khoảng 30% phương sai; thành phần chính thứ nhất chủ yếu phản ánh kiểu thiếu dữ liệu theo trung tâm |
+| VQC không học được | Loss cuối 1,607 so với mức đoán ngẫu nhiên log2(3) = 1,585; accuracy 0,38, thấp hơn mô hình luôn đoán nhóm Vừa (0,54). Nguyên nhân: COBYLA 60 vòng, huấn luyện với 1.024 shots, ansatz reps = 1, ánh xạ bitstring mod 3 bị lệch |
+| Hàm nhân lượng tử bị tập trung | Trung bình phần tử ngoài đường chéo khoảng 0,09–0,12; chưa có tham số bandwidth |
+| Ngân sách tinh chỉnh không đều | Mô hình cổ điển dùng tham số mặc định |
+| Bỏ sót nhóm liều Cao | Recall nhóm Cao bằng 0 ở LR, SVM, MLP và QSVC |
+| Thiếu mốc so sánh | Chưa có mô hình Dummy và công thức IWPC |
 
-Chỉ sử dụng bệnh nhân có stable dose hợp lệ theo quy tắc lọc được chốt ở GĐ3.
+Việc chọn biểu diễn domain dựa trên các biến của công thức IWPC (NEJM 2009), không dựa trên các
+kết quả chạy thử.
 
-## 3. Dataset Splitting
+## 2. Giữ nguyên
 
-Sử dụng Stratified Sampling để duy trì phân bố các lớp.
+- Dữ liệu IWPC gốc, quy tắc gán nhãn và 10 cột đầu vào trong `configs/feature_policy.yaml`.
+  Chủng tộc, thuốc dùng kèm và mã trung tâm không đưa vào đặc trưng.
+- Các tập chia trong `data/splits/`.
+- Chỉ số chính Macro-F1, báo cáo trung bình ± độ lệch chuẩn qua 5 fold.
 
-- Final Test Set: 20% dữ liệu hợp lệ.
-- Development Set: 80% dữ liệu hợp lệ.
+## 3. Kế hoạch
 
-Final Test Set được tách và khóa sau khi hoàn thành kiểm tra tính hợp lệ của mẫu và tạo nhãn.
+- **Biểu diễn:** domain (chính), PCA, mutual information, PLS-DA và đầy đủ 40 cột (tham chiếu).
+- **Mất cân bằng lớp:** mọi mô hình dùng trọng số lớp cân bằng.
+- **Tinh chỉnh:** inner 3-fold theo Macro-F1, mỗi mô hình tối đa 15 cấu hình.
+- **VQC:** ZZ feature map, RealAmplitudes, data re-uploading khi layers = 2, đo ⟨Z⟩ và lớp đọc tuyến tính;
+  huấn luyện bằng statevector, gradient parameter-shift, L-BFGS-B; 5 seed (0–4).
+- **Learning curve:** 50, 100, 200, 400, 600 mẫu lấy từ nhóm 600 người, tập đánh giá là phần còn lại
+  của Development, lặp 5 lần.
+- **Thống kê:** trên Development dùng CV lặp 5×5 với kiểm định t hiệu chỉnh Nadeau–Bengio; trên Final Test
+  dùng paired bootstrap 2.000 lần cho ba cặp QSVC – SVM, VQC – LR, QSVC – QSVC-product.
+- **Phân tích phụ:** theo nhóm chủng tộc; bỏ 21 ca liều ≥ 100 mg/tuần; công thức IWPC có và không có các cột HOLD.
 
-Không sử dụng Final Test Set để lựa chọn feature, tuning hyperparameters hoặc lựa chọn mô hình.
+## 4. Giả thuyết khai báo trước
 
-## 4. Development Protocol
+- H1: Với cùng 4 qubit, cách biểu diễn (PCA hay domain) ảnh hưởng tới Macro-F1 nhiều hơn việc chọn mô hình
+  lượng tử hay cổ điển.
+- H2: QSVC không vượt SVM đã tinh chỉnh trên cùng đầu vào (chênh lệch kỳ vọng trong ±0,03).
+- H3: Rối lượng tử không cải thiện hàm nhân (QSVC ≈ QSVC-product).
+- H4: Khi dữ liệu huấn luyện ít (≤ 200 mẫu), khoảng cách giữa mô hình lượng tử và cổ điển không đổi chiều.
 
-**Matched Classical & Quantum Benchmark:**
+## 5. Thay đổi so với kế hoạch
 
-- Tạo Quantum Development Pool cố định từ Development Set.
-- Số lượng mẫu mục tiêu: 600.
-- Có thể giảm xuống 400 nếu pilot runtime hoặc số lượng mẫu từng lớp yêu cầu.
-- Khóa kích thước Quantum Development Pool trước khi xem model performance.
-- Sử dụng Stratified 5-Fold Cross-Validation.
-- Tất cả mô hình trong matched benchmark sử dụng cùng sample IDs và fold IDs.
-
-**Strong Classical Reference:**
-
-- Sử dụng toàn bộ Development Set.
-- Sử dụng các feature hợp lệ, không giới hạn theo số qubit.
-- Thực hiện Stratified 5-Fold Cross-Validation riêng.
-- Kết quả được trình bày riêng với matched benchmark.
-
-## 5. Preprocessing Protocol
-
-Tất cả các thao tác preprocessing có học tham số từ dữ liệu phải được fit trên training fold.
-
-- Numeric features: Missing value imputation và scaling phù hợp.
-- Categorical/genotype features: Imputation và encoding phù hợp.
-- Feature reduction: PCA(k) được fit trên training fold.
-- Quantum input: Scale PCA components về [0, π].
-- Matched Classical models: Sử dụng cùng PCA components với Quantum models, cho phép scaling riêng nếu cần.
-
-Validation và Test chỉ được transform bằng preprocessing đã fit trên training data.
-
-## 6. Feature and Qubit Budget
-
-- Main experiment: k = 4 dimensions/qubits.
-- Ablation: k = 2 dimensions/qubits.
-- Optional experiment: k = 6 nếu tài nguyên tính toán cho phép.
-
-k được định nghĩa là số chiều số học cuối cùng đưa vào Quantum Circuit, không phải số cột raw ban đầu.
-
-Cần thực hiện PCA diagnostics và kiểm tra mất mát thông tin dự đoán trước khi khóa representation.
-
-## 7. Model Comparison
-
-**Classical Models:**
-
-- Logistic Regression.
-- Support Vector Machine (SVM).
-- Multilayer Perceptron (MLP).
-
-**Quantum Models:**
-
-- Quantum Kernel Classifier.
-- Variational Quantum Classifier (VQC).
-
-Trong matched benchmark, các mô hình phải sử dụng cùng tập dữ liệu, cùng splits và cùng reduced representation.
-
-Hyperparameter tuning budget phải được xác định trước và ghi lại.
-
-## 8. Evaluation Metrics
-
-**Primary Metric:**
-- Macro-F1 Score.
-
-**Mandatory Metric:**
-- Accuracy.
-
-**Secondary Metrics:**
-- Balanced Accuracy.
-- Per-class Recall.
-- Confusion Matrix.
-- Training and Prediction Runtime.
-- Quantum Circuit Statistics.
-
-Kết quả cross-validation được báo cáo dưới dạng mean ± standard deviation.
-
-## 9. Experiment Protocol
-
-**Experiment A — Main Benchmark**
-
-So sánh Logistic Regression, SVM, MLP, Quantum Kernel và VQC trên cùng reduced representation k=4 và Quantum Development Pool.
-
-**Experiment B — Strong Classical Reference**
-
-Đánh giá Classical Models trên toàn bộ feature hợp lệ và full Development Set.
-
-**Experiment C — Limited-data Learning Curve**
-
-Khảo sát ba mức training size:
-
-- 25%.
-- 50%.
-- 100%.
-
-Sử dụng 3 stratified holdout repeats. Trong mỗi repeat, giữ validation cố định và dùng cùng training sample IDs cho các matched models.
-
-**Experiment D — Feature/Qubit Ablation**
-
-So sánh k=2 và k=4 bằng cùng Stratified 5-Fold splits.
-
-k=6 chỉ thực hiện nếu tài nguyên cho phép.
-
-## 10. Reproducibility
-
-- Cố định và lưu random seeds.
-- Lưu sample IDs, train/validation/test splits.
-- Lưu preprocessing và reduction configurations.
-- Lưu model hyperparameters và package versions.
-- VQC sử dụng một primary seed và tối đa hai robustness seeds được khai báo trước nếu runtime cho phép.
-- Không lựa chọn kết quả từ seed tốt nhất để thay thế kết quả primary.
-
-Các giá trị seed cụ thể và danh sách cấu hình tuning sẽ được nhóm thống nhất trong `experiment_matrix` trước khi chạy mô hình.
-
-## 11. Final Evaluation
-
-- Chỉ thực hiện sau khi hoàn tất model selection và khóa cấu hình.
-- Matched models được retrain trên toàn Quantum Development Pool.
-- Strong Classical Models được retrain trên toàn Development Set.
-- Tất cả mô hình được đánh giá trên cùng Final Test Set 20%.
-- Thực hiện paired bootstrap cho các cặp mô hình chính được xác định trước để báo cáo chênh lệch metric và 95% confidence interval.
-- Không điều chỉnh pipeline dựa trên Final Test performance.
-
-## 12. Class Imbalance Policy
-
-- Sử dụng Macro-F1 làm metric chính do khả năng mất cân bằng giữa ba lớp.
-- Không sử dụng class weighting hoặc resampling trong core benchmark theo mặc định.
-- Nếu cần xử lý imbalance, phải thiết kế thành experiment riêng và chỉ thực hiện trên training fold.
-
-## 13. Research Limitations
-
-Kết quả chỉ phục vụ mục đích nghiên cứu và đánh giá thuật toán, không sử dụng để khuyến nghị liều Warfarin thực tế.
-
-Không giả định Quantum Machine Learning có hiệu năng cao hơn Classical Machine Learning.
+| Kế hoạch | Thực hiện |
+|---|---|
+| CV chính trên 5 fold cố định trong `data/splits/` | CV chính là 5-fold phân tầng theo trung tâm (seed 42) trong `scripts/run_classification_cv.py`; kết quả trên fold cố định nằm ở `results/benchmarks/` |
+| Điền giá trị thiếu bằng trung bình | Phục hồi VKORC1 từ SNP liên kết và điền chiều cao, cân nặng bằng hồi quy |
+| SVM gamma gồm cả giá trị 10; VQC tối đa 300 vòng | SVM gamma ∈ {0.01, 0.1, scale, 1}; VQC tối đa 250 vòng |
+| VQC với 5 seed | Chỉ seed 0 |
+| CV lặp 5×5 và kiểm định Nadeau–Bengio | Một lần 5-fold, báo cáo trung bình ± độ lệch chuẩn |
+| Bootstrap cho QSVC – SVM, VQC – LR, QSVC – QSVC-product | Bootstrap cho LR – QSVC-product, QSVC-product – QSVC, QSVC-product – SVM |
+| Learning curve trên nhóm 600 người | Có cả bản này (`results/learning_curve/`) và bản trên toàn bộ Development, mốc 50 đến khoảng 3.460 mẫu (`results/learning_curve_full/`) |
+| Phân tích độ nhạy bỏ ca liều ≥ 100 mg/tuần; IWPC có cột HOLD | Chưa thực hiện. Đã thực hiện phân tích độ nhạy trên nhóm đủ kiểu gen và nhóm INR mục tiêu 2–3 |
+| Final Test chạy một lần | Final Test đã được dùng ba lần (xem `final_configuration.md`) |

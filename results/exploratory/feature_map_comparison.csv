@@ -1,0 +1,6 @@
+setting,macro_f1_mean,macro_f1_sd,recall_high,seconds_per_fold
+"ZZ, nối thẳng hàng (linear) – hiện tại",0.459,0.039,0.502,6.7
+"ZZ, nối mọi cặp (full)",0.473,0.065,0.556,8.8
+Pauli Y + ZZ,0.478,0.07,0.61,8.4
+"Z (product, không rối)",0.501,0.052,0.659,3.5
+"Angle RY 1 lớp (không rối, đơn giản nhất)",0.509,0.052,0.645,1.6

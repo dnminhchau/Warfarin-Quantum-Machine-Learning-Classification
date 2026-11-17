@@ -1,0 +1,13 @@
+columns,model,setting,macro_f1_mean,macro_f1_sd,recall_high,seconds_per_fold
+4 cột: 2 gen + tuổi + cân nặng,LR,4 cột: 2 gen + tuổi + cân nặng,0.551,0.018,0.709,0.5
+4 cột: 2 gen + tuổi + cân nặng,HGB,4 cột: 2 gen + tuổi + cân nặng,0.539,0.007,0.693,1.8
+6 cột: + chiều cao + giới tính,LR,6 cột: + chiều cao + giới tính,0.559,0.015,0.713,0.3
+6 cột: + chiều cao + giới tính,HGB,6 cột: + chiều cao + giới tính,0.551,0.015,0.676,2.1
+10 cột (policy hiện tại),LR,10 cột (policy hiện tại),0.581,0.007,0.715,0.3
+10 cột (policy hiện tại),HGB,10 cột (policy hiện tại),0.572,0.016,0.669,2.5
+10 cột + chủng tộc (HOLD),LR,10 cột + chủng tộc (HOLD),0.585,0.007,0.735,0.4
+10 cột + chủng tộc (HOLD),HGB,10 cột + chủng tộc (HOLD),0.581,0.015,0.676,2.7
+10 cột + 4 thuốc (HOLD),LR,10 cột + 4 thuốc (HOLD),0.584,0.014,0.7,0.5
+10 cột + 4 thuốc (HOLD),HGB,10 cột + 4 thuốc (HOLD),0.58,0.019,0.678,2.7
+10 cột + chủng tộc + 4 thuốc (≈ biến IWPC),LR,10 cột + chủng tộc + 4 thuốc (≈ biến IWPC),0.589,0.01,0.722,0.5
+10 cột + chủng tộc + 4 thuốc (≈ biến IWPC),HGB,10 cột + chủng tộc + 4 thuốc (≈ biến IWPC),0.581,0.018,0.667,2.9

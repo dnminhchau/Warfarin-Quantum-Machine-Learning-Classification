@@ -1,0 +1,31 @@
+{
+  "dataset_name": "Warfarin Consortium Combined Data Set",
+  "dataset_id": "PS206767",
+  "source_organization": "PharmGKB / IWPC",
+  "workbook_metadata_name": "Warfarin Consortium Combined Data Set, March 2008",
+  "source_url": "https://www.clinpgx.org/downloads",
+  "download_date": null,
+  "license_verified": false,
+  "raw_file": {
+    "filename": "PS206767-553247439.xls",
+    "path": "data/raw/PS206767-553247439.xls",
+    "format": "xls",
+    "size_bytes": 5083136,
+    "sha256": "aa624e09c97787cf81912349f5d88458d73d5cabc8df742013552a3e426fd4df"
+  },
+  "workbook": {
+    "sheets": [
+      "Metadata",
+      "Subject Data"
+    ],
+    "subject_data_rows": 5700,
+    "subject_data_columns": 68
+  },
+  "data_policy": {
+    "preserve_raw_file": true,
+    "allow_direct_modification": false,
+    "preprocessing_output_directory": "data/interim/"
+  },
+  "audit_status": "pending",
+  "source_url_note": "User-supplied download page; exact original direct-file URL and download date not independently established."
+}

@@ -1,0 +1,17 @@
+Liều: trung vị 28 · trung bình 31.1 · max 230
+Độ lệch (skew): liều 1.67 -> căn bậc hai 0.50 (gần 0 = cân đối)
+
+Cột                                        %thiếu  %thiếu từ site bỏ trống nguyên cột
+Gender                                       0.1      0%
+Age                                          0.6      0%
+Height (cm)                                 19.3     67%
+Weight (kg)                                  4.8     25%
+Diabetes                                    44.3     92%
+Congestive Heart Failure and/or Cardiomyop  31.2     88%
+Valve Replacement                           32.3     89%
+Current Smoker                              44.7     83%
+CYP2C9 consensus                             1.9      0%
+VKORC1 -1639 consensus                      27.2     15%
+
+VKORC1 -1639 có sẵn: 3151 | sau phục hồi SNP: 3838 (+687 ô)
+Complete-case đủ 10 cột: 1122/4328

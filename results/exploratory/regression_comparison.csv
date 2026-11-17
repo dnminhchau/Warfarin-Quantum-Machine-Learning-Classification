@@ -1,0 +1,5 @@
+model,MAE_mg_week,PW20,R2,accuracy,macro_f1,recall_low,recall_high
+IWPC-formula (không train),9.038,0.433,0.408,0.654,0.55,0.419,0.267
+Ridge (10 cột),8.738,0.445,0.419,0.674,0.559,0.497,0.215
+Ridge (4 biến IWPC),8.949,0.43,0.392,0.658,0.546,0.466,0.224
+HGB-regressor (10 cột),8.823,0.439,0.403,0.67,0.545,0.495,0.185

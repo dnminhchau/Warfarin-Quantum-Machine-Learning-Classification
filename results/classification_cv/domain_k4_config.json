@@ -1,0 +1,9 @@
+{
+  "rep": "domain",
+  "k": 4,
+  "cohort": "all",
+  "n_dev": 4328,
+  "cv": "5-fold stratified by site + inner 3-fold tuning",
+  "final_test_used": false,
+  "vqc_seed": 0
+}
