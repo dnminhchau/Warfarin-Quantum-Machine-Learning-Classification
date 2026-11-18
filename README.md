@@ -29,6 +29,19 @@ Biểu diễn đầu vào gồm 4 đặc trưng (VKORC1, cân nặng, tuổi, CY
 - Theo learning curve, Macro-F1 của LR, SVM và QSVC-product gần như ổn định từ khoảng 100 mẫu huấn luyện,
   trong khi VQC, QSVC và HGB cần nhiều dữ liệu hơn.
 
+Kiểm định trên Development bằng CV lặp 5×5 và kiểm định t hiệu chỉnh Nadeau–Bengio
+(`results/repeated_cv/`):
+
+| Cặp (A − B) | Chênh lệch Macro-F1 | p | Kết luận |
+|---|---|---|---|
+| LR − QSVC-product | +0,001 | 0,85 | Không khác biệt |
+| QSVC − QSVC-product | −0,013 | 0,054 | Chưa đủ ý nghĩa ở mức 0,05 |
+| QSVC − SVM | −0,016 | 0,028 | QSVC thấp hơn SVM |
+| VQC − LR | −0,036 | < 0,001 | VQC thấp hơn LR |
+
+VQC qua 5 seed khởi tạo đạt 0,529 ± 0,005 Macro-F1, nên kết quả với seed 0 đại diện được cho mô hình.
+Bỏ 15 ca liều ≥ 100 mg/tuần khỏi Development gần như không đổi kết quả (LR 0,559, QSVC-product 0,556).
+
 Cấu hình chi tiết và lịch sử đánh giá Final Test: [docs/final_configuration.md](docs/final_configuration.md).
 
 ## Cấu trúc thư mục
@@ -79,6 +92,8 @@ Chạy từ thư mục gốc của repo.
 | Learning curve | `python -m scripts.run_learning_curve_full` | `results/learning_curve_full/` |
 | Số qubit, feature map | `python -m scripts.run_qubit_ablation --part both` | `results/ablation/` |
 | Phân tích theo nhóm | `python -m scripts.run_subgroup_analysis --part subgroup` (hoặc `sensitivity`, `selection`) | `results/subgroup_analysis/` |
+| CV lặp 5×5, Nadeau–Bengio | `python -m scripts.run_repeated_cv` rồi `python -m scripts.run_repeated_cv --summarize` | `results/repeated_cv/` |
+| Bỏ ca liều ≥ 100, IWPC có cột HOLD | `python -m scripts.run_protocol_checks --part outliers` (hoặc `iwpc_hold`) | `results/subgroup_analysis/`, `results/regression_cv/` |
 | Final Test | `python -m scripts.evaluate_final_test` | `results/final_test/` |
 
 Các bước tạo nhãn (`scripts.prepare_labels`) và tập chia (`scripts.prepare_splits`) đã được chạy;
@@ -104,7 +119,7 @@ Các thư mục kết quả khác:
 
 - Mô hình lượng tử được mô phỏng chính xác, chưa chạy trên phần cứng lượng tử thật và chưa xét nhiễu.
 - Final Test đã được dùng nhiều lần trong quá trình phát triển (chi tiết trong `docs/final_configuration.md`).
-- VQC chỉ được chạy với một seed khởi tạo.
+- Final Test chỉ có kết quả VQC với seed 0; độ ổn định theo seed được đánh giá trên Development.
 - Nhóm Châu Á chỉ có 5 bệnh nhân liều Cao trong tập phân tích theo nhóm, nên kết quả của nhóm này không ổn định.
 
 ## Dữ liệu và giấy phép

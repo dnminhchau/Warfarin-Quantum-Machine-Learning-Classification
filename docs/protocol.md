@@ -54,9 +54,9 @@ kết quả chạy thử.
 | CV chính trên 5 fold cố định trong `data/splits/` | CV chính là 5-fold phân tầng theo trung tâm (seed 42) trong `scripts/run_classification_cv.py`; kết quả trên fold cố định nằm ở `results/benchmarks/` |
 | Điền giá trị thiếu bằng trung bình | Phục hồi VKORC1 từ SNP liên kết và điền chiều cao, cân nặng bằng hồi quy |
 | SVM gamma gồm cả giá trị 10; VQC tối đa 300 vòng | SVM gamma ∈ {0.01, 0.1, scale, 1}; VQC tối đa 250 vòng |
-| VQC với 5 seed | Chỉ seed 0 |
-| CV lặp 5×5 và kiểm định Nadeau–Bengio | Một lần 5-fold, báo cáo trung bình ± độ lệch chuẩn |
-| Bootstrap cho QSVC – SVM, VQC – LR, QSVC – QSVC-product | Bootstrap cho LR – QSVC-product, QSVC-product – QSVC, QSVC-product – SVM |
+| VQC với 5 seed | Kết quả chính dùng seed 0; 5 seed (0–4) được đánh giá bổ sung trên lần lặp CV đầu tiên (`results/repeated_cv/vqc_seeds.csv`) |
+| CV lặp 5×5 và kiểm định Nadeau–Bengio | Thực hiện bổ sung bằng `scripts/run_repeated_cv.py` (`results/repeated_cv/`) |
+| Bootstrap trên Final Test cho QSVC – SVM, VQC – LR, QSVC – QSVC-product | Ba cặp này được kiểm định bằng Nadeau–Bengio trên Development. Bootstrap trên Final Test dùng LR – QSVC-product, QSVC-product – QSVC, QSVC-product – SVM |
 | Learning curve trên nhóm 600 người | Có cả bản này (`results/learning_curve/`) và bản trên toàn bộ Development, mốc 50 đến khoảng 3.460 mẫu (`results/learning_curve_full/`) |
-| Phân tích độ nhạy bỏ ca liều ≥ 100 mg/tuần; IWPC có cột HOLD | Chưa thực hiện. Đã thực hiện phân tích độ nhạy trên nhóm đủ kiểu gen và nhóm INR mục tiêu 2–3 |
+| Phân tích độ nhạy bỏ ca liều ≥ 100 mg/tuần; IWPC có cột HOLD | Thực hiện bổ sung bằng `scripts/run_protocol_checks.py`; tập Development có 15 trong 21 ca này. Ngoài ra có phân tích trên nhóm đủ kiểu gen và nhóm INR mục tiêu 2–3 |
 | Final Test chạy một lần | Final Test đã được dùng ba lần (xem `final_configuration.md`) |
