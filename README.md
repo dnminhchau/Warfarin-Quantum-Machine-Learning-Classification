@@ -26,6 +26,10 @@ Biểu diễn đầu vào gồm 4 đặc trưng (VKORC1, cân nặng, tuổi, CY
 - QSVC-product cho kết quả tương đương LR và SVM: chênh lệch với LR là +0,006 Macro-F1,
   khoảng tin cậy 95% của paired bootstrap là [-0,012; +0,022].
 - QSVC có rối lượng tử thấp hơn QSVC-product có ý nghĩa thống kê (chênh lệch 0,014, KTC 95% [0,003; 0,024]).
+- Với các cặp khai báo trước, QSVC thấp hơn SVM (−0,015, KTC 95% [−0,029; −0,001]) và VQC thấp hơn LR
+  (−0,039, KTC 95% [−0,060; −0,017]) trên Final Test.
+- Các mô hình có trọng số lớp cân bằng chủ yếu nhầm nhóm Vừa thành Thấp hoặc Cao; MLP và công thức IWPC
+  ngược lại, dự đoán phần lớn là nhóm Vừa và bỏ sót khoảng 3/4 bệnh nhân nhóm Cao.
 - Theo learning curve, Macro-F1 của LR, SVM và QSVC-product gần như ổn định từ khoảng 100 mẫu huấn luyện,
   trong khi VQC, QSVC và HGB cần nhiều dữ liệu hơn.
 
@@ -95,6 +99,7 @@ Chạy từ thư mục gốc của repo.
 | CV lặp 5×5, Nadeau–Bengio | `python -m scripts.run_repeated_cv` rồi `python -m scripts.run_repeated_cv --summarize` | `results/repeated_cv/` |
 | Bỏ ca liều ≥ 100, IWPC có cột HOLD | `python -m scripts.run_protocol_checks --part outliers` (hoặc `iwpc_hold`) | `results/subgroup_analysis/`, `results/regression_cv/` |
 | Final Test | `python -m scripts.evaluate_final_test` | `results/final_test/` |
+| Dự đoán Final Test, ma trận nhầm lẫn | `python -m scripts.evaluate_final_test_predictions` | `results/final_test/` |
 
 Các bước tạo nhãn (`scripts.prepare_labels`) và tập chia (`scripts.prepare_splits`) đã được chạy;
 kết quả nằm trong `data/interim/` và `data/splits/`. Hai script này không ghi đè dữ liệu đã có.

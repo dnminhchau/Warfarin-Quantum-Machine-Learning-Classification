@@ -1,0 +1,15 @@
+{
+  "date_utc": "2026-11-18T03:52:33+00:00",
+  "models": [
+    "LR",
+    "SVM",
+    "MLP",
+    "HGB",
+    "QSVC",
+    "QSVC-product",
+    "VQC",
+    "IWPC"
+  ],
+  "metrics_reproduced": true,
+  "note": "Lần dùng Final Test thứ 4: tái tạo dự đoán với cấu hình đã chốt (chỉ số khớp kết quả đã lưu) để tính bootstrap cho các cặp khai báo trước và ma trận nhầm lẫn."
+}

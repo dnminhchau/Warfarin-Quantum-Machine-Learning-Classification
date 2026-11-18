@@ -1,0 +1,43 @@
+{
+  "predeclared": {
+    "QSVC_vs_SVM": {
+      "mean_diff": -0.014786914212068627,
+      "ci_low": -0.028531847108841817,
+      "ci_high": -0.0010175793310039786,
+      "significant": true
+    },
+    "VQC_vs_LR": {
+      "mean_diff": -0.039078421740569635,
+      "ci_low": -0.06035327067450684,
+      "ci_high": -0.01717743692186246,
+      "significant": true
+    },
+    "QSVC_vs_QSVC-product": {
+      "mean_diff": -0.013501795904512838,
+      "ci_low": -0.023980089021717728,
+      "ci_high": -0.0025872661228849934,
+      "significant": true
+    }
+  },
+  "existing_recomputed": {
+    "LR_vs_QSVC-product": {
+      "mean_diff": 0.005695888140415615,
+      "ci_low": -0.011504951296869704,
+      "ci_high": 0.022289987597172264,
+      "significant": false
+    },
+    "QSVC-product_vs_QSVC": {
+      "mean_diff": 0.013501795904512838,
+      "ci_low": 0.0025872661228849903,
+      "ci_high": 0.023980089021717728,
+      "significant": true
+    },
+    "QSVC-product_vs_SVM": {
+      "mean_diff": -0.0012851183075557895,
+      "ci_low": -0.01350965425230371,
+      "ci_high": 0.010385041378726074,
+      "significant": false
+    }
+  },
+  "existing_matches_saved": true
+}

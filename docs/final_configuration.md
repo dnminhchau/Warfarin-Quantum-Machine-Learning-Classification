@@ -61,14 +61,28 @@ Paired bootstrap trên Macro-F1 (`results/final_test/bootstrap.json`):
 | QSVC-product − QSVC | +0,014 | [+0,003; +0,024] | QSVC-product tốt hơn |
 | QSVC-product − SVM | −0,001 | [−0,014; +0,010] | Không khác biệt có ý nghĩa |
 
+Paired bootstrap cho các cặp khai báo trước trong `docs/protocol.md` (`results/final_test/bootstrap_predeclared.json`):
+
+| Cặp (A − B) | Chênh lệch | KTC 95% | Kết luận |
+|---|---|---|---|
+| QSVC − SVM | −0,015 | [−0,029; −0,001] | QSVC thấp hơn SVM |
+| VQC − LR | −0,039 | [−0,060; −0,017] | VQC thấp hơn LR |
+| QSVC − QSVC-product | −0,014 | [−0,024; −0,003] | QSVC thấp hơn QSVC-product |
+
+Dự đoán từng bệnh nhân và ma trận nhầm lẫn của các mô hình nằm trong `predictions.csv` và `confusion_matrices.csv`.
+
 ## Lịch sử sử dụng Final Test
 
-Final Test đã được dùng ba lần:
+Final Test đã được dùng bốn lần:
 
 1. Trong quá trình phát triển, với tham số cố định (chưa tinh chỉnh). Kết quả lần này không được báo cáo.
 2. Sau khi bổ sung tinh chỉnh siêu tham số: LR, SVM, QSVC-product, QSVC và công thức IWPC
    (`metrics.csv`, `bootstrap.json`). Đây là kết quả chính.
 3. Ngày 17/11/2026, bổ sung MLP, HGB và VQC bằng `scripts/evaluate_final_test_additional.py`
    (`metrics_additional.csv`). Pipeline và lưới tham số giữ nguyên, kết quả của lần 2 không thay đổi.
+4. Ngày 18/11/2026, tái tạo dự đoán của cả 7 mô hình và công thức IWPC bằng
+   `scripts/evaluate_final_test_predictions.py` để tính bootstrap cho các cặp khai báo trước và ma trận nhầm lẫn.
+   Tham số được chọn và mọi chỉ số trùng khớp với các lần 2 và 3 (sai khác dưới 1e-16); 3 cặp bootstrap cũ
+   tính lại cũng trùng khớp.
 
 Vì Final Test đã được xem trước khi hoàn tất thí nghiệm, kết quả trên Final Test không hoàn toàn độc lập.
