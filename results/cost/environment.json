@@ -1,0 +1,9 @@
+{
+  "python": "3.13.18",
+  "machine": "x86_64",
+  "processor": "x86_64",
+  "cpu_count": 2,
+  "omp_num_threads": "1",
+  "fold": "fold 0 of StratifiedKFold(5, shuffle=True, random_state=42) on Project Site",
+  "note": "Thời gian phụ thuộc phần cứng; chỉ nên so sánh tương đối giữa các mô hình trong cùng lần chạy."
+}

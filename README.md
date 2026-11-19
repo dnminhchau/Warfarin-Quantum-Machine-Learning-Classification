@@ -46,6 +46,21 @@ Kiểm định trên Development bằng CV lặp 5×5 và kiểm định t hiệ
 VQC qua 5 seed khởi tạo đạt 0,529 ± 0,005 Macro-F1, nên kết quả với seed 0 đại diện được cho mô hình.
 Bỏ 15 ca liều ≥ 100 mg/tuần khỏi Development gần như không đổi kết quả (LR 0,559, QSVC-product 0,556).
 
+Chi phí tính toán theo số qubit, đo trên fold 0 của CV (3.462 mẫu huấn luyện, 1 luồng CPU,
+tham số đã chọn ở Final Test; `results/cost/`):
+
+| k (qubit) | LR | SVM | QSVC | QSVC-product | VQC | Mạch VQC (độ sâu / CNOT / tham số) |
+|---|---|---|---|---|---|---|
+| 2 | 0,03 s | 0,26 s | 1,6 s | 1,1 s | 4,3 s | 24 / 10 / 16 |
+| 4 | 0,03 s | 0,26 s | 3,4 s | 1,9 s | 39 s | 41 / 30 / 32 |
+| 6 | 0,03 s | 0,25 s | 5,0 s | 2,6 s | ≈ 61 phút (ước tính) | 51 / 50 / 48 |
+
+- Thời gian mỗi vòng tối ưu của VQC tăng khoảng 10 lần từ 2 lên 4 qubit và khoảng 50 lần từ 4 lên 6 qubit,
+  do statevector có 2^k phần tử và số tham số tăng theo k. Thời gian VQC ở k = 6 được ước tính từ 20 vòng
+  (14,6 s/vòng × tối đa 250 vòng); ở k = 2 và 4, VQC dừng sau 154 và 137 vòng.
+- Mạch của QSVC-product không có cổng CNOT và có độ sâu cố định 4, nên hàm nhân của nó tách được thành tích
+  của các hàm nhân trên từng qubit và có thể tính hiệu quả trên máy tính cổ điển.
+
 Cấu hình chi tiết và lịch sử đánh giá Final Test: [docs/final_configuration.md](docs/final_configuration.md).
 
 ## Cấu trúc thư mục
@@ -95,6 +110,7 @@ Chạy từ thư mục gốc của repo.
 | Hồi quy liều | `python -m scripts.run_regression_cv --k 4` | `results/regression_cv/` |
 | Learning curve | `python -m scripts.run_learning_curve_full` | `results/learning_curve_full/` |
 | Số qubit, feature map | `python -m scripts.run_qubit_ablation --part both` | `results/ablation/` |
+| Chi phí tính toán | `OMP_NUM_THREADS=1 python -m scripts.run_cost_analysis` | `results/cost/` |
 | Phân tích theo nhóm | `python -m scripts.run_subgroup_analysis --part subgroup` (hoặc `sensitivity`, `selection`) | `results/subgroup_analysis/` |
 | CV lặp 5×5, Nadeau–Bengio | `python -m scripts.run_repeated_cv` rồi `python -m scripts.run_repeated_cv --summarize` | `results/repeated_cv/` |
 | Bỏ ca liều ≥ 100, IWPC có cột HOLD | `python -m scripts.run_protocol_checks --part outliers` (hoặc `iwpc_hold`) | `results/subgroup_analysis/`, `results/regression_cv/` |
