@@ -55,8 +55,10 @@ kết quả chạy thử.
 | Điền giá trị thiếu bằng trung bình | Phục hồi VKORC1 từ SNP liên kết và điền chiều cao, cân nặng bằng hồi quy |
 | SVM gamma gồm cả giá trị 10; VQC tối đa 300 vòng | SVM gamma ∈ {0.01, 0.1, scale, 1}; VQC tối đa 250 vòng |
 | VQC với 5 seed | Kết quả chính dùng seed 0; 5 seed (0–4) được đánh giá bổ sung trên lần lặp CV đầu tiên (`results/repeated_cv/vqc_seeds.csv`) |
-| CV lặp 5×5 và kiểm định Nadeau–Bengio | Thực hiện bổ sung bằng `scripts/run_repeated_cv.py` (`results/repeated_cv/`) |
+| CV lặp 5×5 và kiểm định Nadeau–Bengio | Thực hiện bổ sung bằng `scripts/run_repeated_cv.py` (`results/repeated_cv/`), thêm hiệu chỉnh Holm cho 4 cặp so sánh |
 | Bootstrap trên Final Test cho QSVC – SVM, VQC – LR, QSVC – QSVC-product | Lần đánh giá chính tính bootstrap cho LR – QSVC-product, QSVC-product – QSVC, QSVC-product – SVM. Ba cặp khai báo trước được tính bổ sung sau khi tái tạo dự đoán (`results/final_test/bootstrap_predeclared.json`) và được kiểm định thêm bằng Nadeau–Bengio trên Development |
 | Learning curve trên nhóm 600 người | Có cả bản này (`results/learning_curve/`) và bản trên toàn bộ Development, mốc 50 đến khoảng 3.460 mẫu (`results/learning_curve_full/`) |
 | Phân tích độ nhạy bỏ ca liều ≥ 100 mg/tuần; IWPC có cột HOLD | Thực hiện bổ sung bằng `scripts/run_protocol_checks.py`; tập Development có 15 trong 21 ca này. Ngoài ra có phân tích trên nhóm đủ kiểu gen và nhóm INR mục tiêu 2–3 |
-| Final Test chạy một lần | Final Test đã được dùng bốn lần (xem `final_configuration.md`) |
+| Mọi mô hình dùng trọng số lớp cân bằng | MLP phiên bản đầu không cân bằng lớp (recall nhóm Cao 0,19 trên CV). Bổ sung `MLP-balanced` ở CV chính, CV lặp 5×5, learning curve, khảo sát số qubit, chi phí và Final Test; bản cũ được giữ lại để tái tạo kết quả |
+| Final Test chạy một lần | Final Test đã được dùng năm lần (xem `final_configuration.md`) |
+| Không có phân tích shots và nhiễu | Bổ sung bằng `scripts/run_noise_analysis.py` (`results/noise/`): CV 5-fold trên Development, tham số cố định, không dùng Final Test |

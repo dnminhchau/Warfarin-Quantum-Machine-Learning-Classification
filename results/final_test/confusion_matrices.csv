@@ -8,6 +8,9 @@ SVM,High,3,26,109
 MLP,Low,210,147,0
 MLP,Intermediate,90,473,24
 MLP,High,1,101,36
+MLP-balanced,Low,268,76,13
+MLP-balanced,Intermediate,154,254,179
+MLP-balanced,High,4,24,110
 HGB,Low,258,89,10
 HGB,Intermediate,153,267,167
 HGB,High,3,27,108

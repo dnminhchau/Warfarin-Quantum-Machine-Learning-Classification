@@ -1,64 +1,35 @@
-"""Mô hình cổ điển và công thức IWPC dùng làm mốc so sánh."""
+"""MLP có cân bằng lớp và công thức IWPC dùng làm mốc so sánh."""
 from __future__ import annotations
 
 import numpy as np
 import pandas as pd
 from sklearn.base import BaseEstimator, ClassifierMixin
-from sklearn.dummy import DummyClassifier
-from sklearn.ensemble import HistGradientBoostingClassifier
-from sklearn.linear_model import LogisticRegression
 from sklearn.neural_network import MLPClassifier
-from sklearn.svm import SVC
 from sklearn.utils.class_weight import compute_sample_weight
-
-from src.quantum_models import QuantumKernelSVC, VQCClassifier
 
 
 class BalancedMLP(BaseEstimator, ClassifierMixin):
-    """MLPClassifier có trọng số mẫu cân bằng theo lớp (MLP không hỗ trợ class_weight)."""
+    """MLPClassifier có trọng số mẫu cân bằng theo lớp.
 
-    def __init__(self, hidden_layer_sizes=(32, 16), alpha=1e-4, random_state=42):
+    MLPClassifier không có tham số class_weight, nên trọng số được truyền qua sample_weight với cùng công thức
+    class_weight='balanced' của các mô hình khác. Các thiết lập còn lại giống MLP không cân bằng trong
+    src/evaluation.py (max_iter 1000, early stopping, random_state 0).
+    """
+
+    def __init__(self, hidden_layer_sizes=(32, 16), alpha=1e-4, random_state=0):
         self.hidden_layer_sizes = hidden_layer_sizes
         self.alpha = alpha
         self.random_state = random_state
 
     def fit(self, X, y):
         self.mlp_ = MLPClassifier(hidden_layer_sizes=self.hidden_layer_sizes, alpha=self.alpha,
-                                  max_iter=1000, early_stopping=True, n_iter_no_change=20,
-                                  random_state=self.random_state)
+                                  max_iter=1000, early_stopping=True, random_state=self.random_state)
         self.mlp_.fit(X, y, sample_weight=compute_sample_weight("balanced", y))
         self.classes_ = self.mlp_.classes_
         return self
 
     def predict(self, X):
         return self.mlp_.predict(X)
-
-
-# Danh sách mô hình và lưới tham số của bộ benchmark trong results/benchmarks.
-# Mỗi mô hình tối đa 15 cấu hình, chọn bằng inner CV theo Macro-F1.
-def model_zoo(vqc_seeds=(0,)) -> dict:
-    zoo = {
-        "Dummy": (DummyClassifier(strategy="most_frequent"), {}),
-        "LR": (LogisticRegression(max_iter=5000, class_weight="balanced"),
-               {"C": [0.01, 0.1, 1, 10, 100]}),
-        "SVM": (SVC(kernel="rbf", class_weight="balanced"),
-                {"C": [0.1, 1, 10], "gamma": [0.01, 0.1, "scale", 1.0, 10.0]}),
-        "MLP": (BalancedMLP(), {"hidden_layer_sizes": [(16,), (32, 16)], "alpha": [1e-4, 1e-2]}),
-        "HGB": (HistGradientBoostingClassifier(class_weight="balanced", max_iter=200, random_state=0),
-                {"max_depth": [2, 3], "learning_rate": [0.05, 0.1]}),
-        "QSVC": (QuantumKernelSVC(feature_map="zz", reps=2),
-                 {"bandwidth": [0.05, 0.1, 0.25, 0.5, 1.0], "C": [0.1, 1, 10]}),
-        # Đối chứng không rối lượng tử
-        "QSVC-product": (QuantumKernelSVC(feature_map="product", reps=2),
-                         {"bandwidth": [0.05, 0.1, 0.25, 0.5, 1.0], "C": [0.1, 1, 10]}),
-    }
-    for s in vqc_seeds:
-        zoo[f"VQC_s{s}"] = (VQCClassifier(seed=s, maxiter=300),
-                            {"layers": [1, 2], "reps": [1, 3], "bandwidth": [0.5, 1.0]})
-    return zoo
-
-
-QUANTUM_MODELS_PREFIX = ("QSVC", "VQC")
 
 
 # Công thức dược di truyền IWPC (NEJM 2009) với hệ số đã công bố, không huấn luyện lại.

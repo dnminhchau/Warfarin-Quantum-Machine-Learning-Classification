@@ -80,7 +80,7 @@ def save_rows(rows, filename):
 
 def part_selection(a):
     from src.dataset import load_folds, fold_iter
-    dev = dev_df(); x = load_policy_columns(ROOT); folds = load_folds(ROOT, "dev4328")
+    dev = dev_df(); folds = load_folds(ROOT, "dev4328")
     enc = PGxFeatureBuilder(use_snp_recovery=True)
     rfe = np.zeros(6); fwd = np.zeros(6); mi = []; perm = []
     for k_, tr, va in fold_iter(folds):

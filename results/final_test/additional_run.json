@@ -1,12 +1,24 @@
-{
-  "date_utc": "2026-11-17T12:04:11+00:00",
-  "models": [
-    "MLP",
-    "HGB",
-    "VQC"
-  ],
-  "vqc_seed": 0,
-  "rep": "domain",
-  "k": 4,
-  "note": "Lần mở Final Test thứ 3. Chỉ thêm mô hình chưa đánh giá; không thay đổi pipeline hay kết quả của các mô hình đã có trong metrics.csv."
-}
+[
+  {
+    "date_utc": "2026-11-17T12:04:11+00:00",
+    "models": [
+      "MLP",
+      "HGB",
+      "VQC"
+    ],
+    "vqc_seed": 0,
+    "rep": "domain",
+    "k": 4,
+    "note": "Lần mở Final Test thứ 3. Chỉ thêm mô hình chưa đánh giá; không thay đổi pipeline hay kết quả của các mô hình đã có trong metrics.csv."
+  },
+  {
+    "date_utc": "2026-11-22T07:08:32+00:00",
+    "models": [
+      "MLP-balanced"
+    ],
+    "vqc_seed": 0,
+    "rep": "domain",
+    "k": 4,
+    "note": "Chỉ thêm mô hình chưa đánh giá; không thay đổi pipeline hay kết quả của các mô hình đã có."
+  }
+]

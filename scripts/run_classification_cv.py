@@ -15,7 +15,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from src.dataset import apply_cohort, load_dataset, load_policy_columns, split_ids
+from src.dataset import apply_cohort, load_dataset, split_ids
 from src.evaluation import classif_zoo, cv_site_stratified
 
 ROOT = Path(__file__).resolve().parent.parent

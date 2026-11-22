@@ -1,0 +1,4 @@
+model,circuit,qubits,depth,cx,one_qubit_noisy,rz,cx_transpiled_jointly,clean_run_prob_cx_0.3pct
+QSVC,U(x_i) rồi U(x_j)†,4,46,24,16,60,22.0,0.9304
+QSVC-product,U(x_i) rồi U(x_j)†,4,16,0,16,48,0.0,1.0
+VQC,2 lớp: ZZ feature map + RealAmplitudes (reps 3),4,65,30,68,82,,0.9138

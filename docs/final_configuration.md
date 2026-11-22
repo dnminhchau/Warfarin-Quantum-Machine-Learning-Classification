@@ -19,13 +19,15 @@
 
 ## Mô hình và lưới tham số
 
-Tinh chỉnh bằng inner 3-fold theo Macro-F1, `class_weight='balanced'` khi mô hình hỗ trợ.
+Tinh chỉnh bằng inner 3-fold theo Macro-F1, trọng số lớp cân bằng cho mọi mô hình trừ MLP phiên bản đầu.
+MLP cân bằng lớp dùng trọng số mẫu theo cùng công thức `class_weight='balanced'` vì MLPClassifier không có tham số này.
 
 | Mô hình | Lưới tham số |
 |---|---|
 | LR | C ∈ {0.01, 0.1, 1, 10, 100} |
 | SVM (RBF) | C ∈ {0.1, 1, 10} × gamma ∈ {0.01, 0.1, scale, 1} |
-| MLP | hidden ∈ {(16), (32, 16)} × alpha ∈ {1e-4, 1e-2} |
+| MLP (cân bằng lớp) | hidden ∈ {(16), (32, 16)} × alpha ∈ {1e-4, 1e-2} |
+| MLP (không cân bằng lớp, phiên bản đầu) | như trên |
 | HGB | max_depth ∈ {2, 3} × learning_rate ∈ {0.05, 0.1} |
 | QSVC (ZZ feature map) | bandwidth ∈ {0.05, 0.1, 0.25, 0.5, 1} × C ∈ {0.1, 1, 10} |
 | QSVC-product (Z feature map, không rối lượng tử) | như QSVC |
@@ -48,7 +50,8 @@ Nguồn: `results/final_test/metrics.csv` và `metrics_additional.csv`.
 | SVM | 0,583 | 0,591 | 0,700 | 0,477 | 0,790 | 0,569 | C = 10, gamma = 0,01 |
 | QSVC-product | 0,582 | 0,591 | 0,697 | 0,480 | 0,783 | 0,572 | C = 10, bandwidth = 0,1 |
 | HGB | 0,577 | 0,585 | 0,723 | 0,455 | 0,783 | 0,573 | max_depth = 2, learning_rate = 0,1 |
-| MLP | 0,575 | 0,665 | 0,588 | 0,806 | 0,261 | 0,517 | hidden = (32, 16), alpha = 1e-4 |
+| MLP (cân bằng lớp) | 0,575 | 0,584 | 0,751 | 0,433 | 0,797 | 0,573 | hidden = (16), alpha = 1e-2 |
+| MLP (không cân bằng lớp) | 0,575 | 0,665 | 0,588 | 0,806 | 0,261 | 0,517 | hidden = (32, 16), alpha = 1e-4 |
 | QSVC | 0,568 | 0,575 | 0,703 | 0,443 | 0,804 | 0,570 | C = 10, bandwidth = 0,05 |
 | VQC | 0,548 | 0,556 | 0,717 | 0,407 | 0,775 | 0,536 | layers = 2, reps = 3, bandwidth = 0,5 |
 | Công thức IWPC | 0,541 | 0,644 | 0,412 | 0,876 | 0,261 | 0,442 | – |
@@ -73,7 +76,7 @@ Dự đoán từng bệnh nhân và ma trận nhầm lẫn của các mô hình 
 
 ## Lịch sử sử dụng Final Test
 
-Final Test đã được dùng bốn lần:
+Final Test đã được dùng năm lần:
 
 1. Trong quá trình phát triển, với tham số cố định (chưa tinh chỉnh). Kết quả lần này không được báo cáo.
 2. Sau khi bổ sung tinh chỉnh siêu tham số: LR, SVM, QSVC-product, QSVC và công thức IWPC
@@ -85,4 +88,10 @@ Final Test đã được dùng bốn lần:
    Tham số được chọn và mọi chỉ số trùng khớp với các lần 2 và 3 (sai khác dưới 1e-16); 3 cặp bootstrap cũ
    tính lại cũng trùng khớp.
 
-Vì Final Test đã được xem trước khi hoàn tất thí nghiệm, kết quả trên Final Test không hoàn toàn độc lập.
+5. Ngày 22/11/2026, bổ sung MLP có cân bằng lớp (`MLP-balanced`) bằng `scripts/evaluate_final_test_additional.py`
+   và tái tạo dự đoán bằng `scripts/evaluate_final_test_predictions.py` (thêm cột MLP-balanced vào `predictions.csv`
+   và `confusion_matrices.csv`). Chỉ số của các mô hình đã có trùng khớp với các lần trước; bootstrap của các cặp
+   khai báo trước không đổi.
+
+Các lần 2–5 chỉ thêm mô hình hoặc tái tạo dự đoán với pipeline và lưới tham số không đổi, không dùng để chọn
+cấu hình. Vì Final Test đã được xem trước khi hoàn tất thí nghiệm, kết quả trên Final Test không hoàn toàn độc lập.

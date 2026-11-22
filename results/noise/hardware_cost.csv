@@ -1,0 +1,4 @@
+model,train_circuits,predict_circuits,note,total_circuits,shots_per_circuit,total_shots,cx_per_circuit
+QSVC,9363628,4682896,Mỗi cặp bệnh nhân một mạch; chưa tính tinh chỉnh tham số,14046524,1000,14046524000,24
+QSVC-product,9363628,4682896,Mỗi cặp bệnh nhân một mạch; chưa tính tinh chỉnh tham số,14046524,1000,14046524000,0
+VQC,45405048,1082,Mỗi lần tính gradient: 1 + 2 x 32 mạch cho mỗi mẫu (parameter-shift); trung bình 161 lần tính trên 5 fold; chưa tính tinh chỉnh tham số,45406130,1000,45406130000,30

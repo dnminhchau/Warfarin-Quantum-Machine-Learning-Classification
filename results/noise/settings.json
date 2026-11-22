@@ -1,0 +1,113 @@
+{
+  "design": "CV 5-fold phân tầng theo Project Site (seed 42) trên Development; không dùng Final Test",
+  "qsvc_params": {
+    "QSVC": {
+      "feature_map": "zz",
+      "bandwidth": 0.05,
+      "C": 10
+    },
+    "QSVC-product": {
+      "feature_map": "product",
+      "bandwidth": 0.1,
+      "C": 10
+    }
+  },
+  "vqc_params": {
+    "layers": 2,
+    "reps": 3,
+    "bandwidth": 0.5,
+    "maxiter": 250,
+    "seed": 0
+  },
+  "noise_levels": {
+    "none": null,
+    "low": {
+      "p1": 0.0003,
+      "p2": 0.003,
+      "readout": 0.01
+    },
+    "high": {
+      "p1": 0.001,
+      "p2": 0.01,
+      "readout": 0.03
+    }
+  },
+  "conditions": [
+    {
+      "noise": "none",
+      "shots": 0
+    },
+    {
+      "noise": "none",
+      "shots": 256
+    },
+    {
+      "noise": "none",
+      "shots": 1024
+    },
+    {
+      "noise": "none",
+      "shots": 4096
+    },
+    {
+      "noise": "none",
+      "shots": 16384
+    },
+    {
+      "noise": "none",
+      "shots": 65536
+    },
+    {
+      "noise": "low",
+      "shots": 0
+    },
+    {
+      "noise": "low",
+      "shots": 1024
+    },
+    {
+      "noise": "high",
+      "shots": 0
+    },
+    {
+      "noise": "high",
+      "shots": 1024
+    }
+  ],
+  "transpile": "basis cx, rz, sx, x; coupling map dạng hàng 4 qubit; optimization_level 1; rz không lỗi",
+  "qsvc_kernel": "đường chéo = 1, ước lượng tam giác trên rồi lấy đối xứng, chiếu về nửa xác định dương",
+  "vqc": "huấn luyện statevector chính xác; shots/nhiễu chỉ áp dụng khi dự đoán",
+  "vqc_training_info": [
+    {
+      "fold": 0,
+      "iterations": 137,
+      "loss_grad_evals": 145,
+      "trainable_quantum_params": 32
+    },
+    {
+      "fold": 1,
+      "iterations": 144,
+      "loss_grad_evals": 157,
+      "trainable_quantum_params": 32
+    },
+    {
+      "fold": 2,
+      "iterations": 126,
+      "loss_grad_evals": 139,
+      "trainable_quantum_params": 32
+    },
+    {
+      "fold": 3,
+      "iterations": 144,
+      "loss_grad_evals": 158,
+      "trainable_quantum_params": 32
+    },
+    {
+      "fold": 4,
+      "iterations": 186,
+      "loss_grad_evals": 208,
+      "trainable_quantum_params": 32
+    }
+  ],
+  "hardware_cost_shots_per_circuit": 1000
+}

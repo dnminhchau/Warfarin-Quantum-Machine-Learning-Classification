@@ -7,7 +7,8 @@ Chạy:
     python -m scripts.run_repeated_cv --repeats 0 1 2 3 4 --models LR SVM QSVC QSVC-product VQC
     python -m scripts.run_repeated_cv --repeats 0 --models VQC --vqc-seeds 1 2 3 4 --tag vqc_seeds
     python -m scripts.run_repeated_cv --summarize
-Kết quả: results/repeated_cv/fold_metrics_<tag>.csv, summary.csv, nadeau_bengio.csv, vqc_seeds.csv
+    python -m scripts.run_repeated_cv --repeats 0 1 2 3 4 --models MLP-balanced --tag mlp_balanced
+Kết quả: results/repeated_cv/fold_metrics_<tag>.csv, summary.csv, nadeau_bengio.csv (kèm p hiệu chỉnh Holm), vqc_seeds.csv
 """
 from __future__ import annotations
 
@@ -71,6 +72,7 @@ def summarize():
     summary = (main.groupby("model")
                .agg(n_folds=("macro_f1", "size"), n_repeats=("repeat", "nunique"),
                     macro_f1_mean=("macro_f1", "mean"), macro_f1_sd=("macro_f1", "std"),
+                    accuracy_mean=("accuracy", "mean"), accuracy_sd=("accuracy", "std"),
                     recall_high_mean=("recall_high", "mean"), qwk_mean=("qwk", "mean"))
                .sort_values("macro_f1_mean", ascending=False).round(4).reset_index())
     summary.to_csv(OUT / "summary.csv", index=False)
@@ -88,6 +90,14 @@ def summarize():
         tests.append({"pair": f"{a_} - {b_}", "n_folds": len(idx), "mean_diff": round(d.mean(), 4),
                       "t": round(t, 3), "p_value": round(p, 4), "significant_0.05": p < 0.05})
     tests = pd.DataFrame(tests)
+    # Hiệu chỉnh Holm cho nhiều cặp so sánh cùng lúc
+    order = np.argsort(tests.p_value.to_numpy())
+    adj, running = np.empty(len(tests)), 0.0
+    for rank, i in enumerate(order):
+        running = max(running, min(1.0, (len(tests) - rank) * tests.p_value.iloc[i]))
+        adj[i] = running
+    tests["p_holm"] = adj.round(4)
+    tests["significant_holm_0.05"] = tests.p_holm < 0.05
     tests.to_csv(OUT / "nadeau_bengio.csv", index=False)
     print(tests.to_string(index=False), "\n")
 

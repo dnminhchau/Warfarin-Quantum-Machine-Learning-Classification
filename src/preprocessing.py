@@ -20,7 +20,6 @@ from sklearn.decomposition import PCA
 from sklearn.feature_selection import SelectKBest, mutual_info_classif
 from sklearn.impute import SimpleImputer
 from sklearn.linear_model import LinearRegression
-from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 
 # Thứ tự ưu tiên theo thuật toán IWPC 2009, cố định trước khi xem kết quả.

@@ -1,27 +1,25 @@
 """Danh sách mô hình, pipeline, chỉ số đánh giá, cross-validation và đánh giá Final Test.
 
-Mọi mô hình được tinh chỉnh bằng cùng một inner CV theo Macro-F1, với class_weight='balanced'
-khi mô hình hỗ trợ.
+Mọi mô hình được tinh chỉnh bằng cùng một inner CV theo Macro-F1 và dùng trọng số lớp cân bằng,
+trừ Dummy và MLP phiên bản đầu (MLP-balanced là bản có cân bằng lớp).
 """
 from __future__ import annotations
 
 import numpy as np
-import pandas as pd
 from sklearn.base import clone
 from sklearn.dummy import DummyClassifier
 from sklearn.ensemble import HistGradientBoostingClassifier
-from sklearn.linear_model import LogisticRegression, Ridge
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (accuracy_score, cohen_kappa_score, f1_score, r2_score,
                              recall_score)
 from sklearn.model_selection import GridSearchCV, StratifiedKFold
 from sklearn.neural_network import MLPClassifier
 from sklearn.pipeline import Pipeline
-from sklearn.svm import SVC, SVR
+from sklearn.svm import SVC
 
-from src.baselines import iwpc_predict_class, iwpc_predict_dose
+from src.baselines import BalancedMLP
 from src.preprocessing import build_representation
-from src.quantum_models import (QuantumKernelSVC, VQCClassifier, feature_states,
-                                   make_feature_map)
+from src.quantum_models import QuantumKernelSVC, VQCClassifier
 
 # Mô hình phân loại
 def classif_zoo(vqc_seed: int = 0) -> dict:
@@ -32,8 +30,11 @@ def classif_zoo(vqc_seed: int = 0) -> dict:
                {"model__C": [0.01, 0.1, 1, 10, 100]}, "classical"),
         "SVM": (SVC(class_weight="balanced"),
                 {"model__C": [0.1, 1, 10], "model__gamma": [0.01, 0.1, "scale", 1.0]}, "classical"),
+        # MLP không cân bằng lớp: phiên bản đầu, giữ lại để tái tạo kết quả đã lưu
         "MLP": (MLPClassifier(max_iter=1000, early_stopping=True, random_state=0),
                 {"model__hidden_layer_sizes": [(16,), (32, 16)], "model__alpha": [1e-4, 1e-2]}, "classical"),
+        "MLP-balanced": (BalancedMLP(),
+                         {"model__hidden_layer_sizes": [(16,), (32, 16)], "model__alpha": [1e-4, 1e-2]}, "classical"),
         "HGB": (HistGradientBoostingClassifier(class_weight="balanced", random_state=0),
                 {"model__max_depth": [2, 3], "model__learning_rate": [0.05, 0.1]}, "classical"),
         "QSVC": (QuantumKernelSVC(feature_map="zz"),

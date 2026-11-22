@@ -3,7 +3,7 @@
 Không ghi đè kết quả đã có. Pipeline và lưới tham số giữ nguyên như evaluate_final_test.py.
 Lần chạy này được ghi lại trong docs/final_configuration.md.
 Chạy: python -m scripts.evaluate_final_test_additional --models MLP HGB VQC
-Kết quả: results/final_test/metrics_additional.csv và additional_run.json
+Kết quả: results/final_test/metrics_additional.csv và additional_run.json (danh sách các lần chạy)
 """
 from __future__ import annotations
 
@@ -49,12 +49,15 @@ def main():
         rows.append({"model": n, **classification_metrics(yte, p), "best_params": json.dumps(bp)})
         pd.DataFrame(rows).to_csv(path, index=False)
         print(f"{n:6s} MacroF1={rows[-1]['macro_f1']:.3f} recallCao={rows[-1]['recall_high']:.3f} tune={bp}", flush=True)
-    (out / "additional_run.json").write_text(json.dumps({
+    log = out / "additional_run.json"
+    runs = json.loads(log.read_text(encoding="utf-8")) if log.exists() else []
+    runs = runs if isinstance(runs, list) else [runs]
+    runs.append({
         "date_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "models": a.models, "vqc_seed": a.vqc_seed, "rep": a.rep, "k": a.k,
-        "note": "Lần mở Final Test thứ 3. Chỉ thêm mô hình chưa đánh giá; không thay đổi pipeline "
-                "hay kết quả của các mô hình đã có trong metrics.csv.",
-    }, indent=2, ensure_ascii=False), encoding="utf-8")
+        "note": "Chỉ thêm mô hình chưa đánh giá; không thay đổi pipeline hay kết quả của các mô hình đã có.",
+    })
+    log.write_text(json.dumps(runs, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
 if __name__ == "__main__":

@@ -4,6 +4,7 @@ Mỗi mô hình được tinh chỉnh bằng inner CV trên Development, huấn 
 Development rồi dự đoán Final Test; sau đó so sánh các cặp mô hình bằng paired bootstrap.
 Chỉ chạy khi pipeline đã cố định. Script dừng nếu đã có kết quả để tránh mở lại tập kiểm thử.
 Chạy: python -m scripts.evaluate_final_test --k 4 --n-jobs -1
+(các mô hình khác được thêm bằng scripts/evaluate_final_test_additional.py)
 Kết quả: results/final_test/metrics.csv và bootstrap.json
 """
 from __future__ import annotations
@@ -29,7 +30,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--k", type=int, default=4)
     ap.add_argument("--rep", default="domain")
-    ap.add_argument("--models", nargs="*", default=["LR", "SVM", "MLP", "HGB", "QSVC", "QSVC-product", "VQC", "Dummy"])
+    ap.add_argument("--models", nargs="*", default=["LR", "SVM", "QSVC", "QSVC-product"])
     ap.add_argument("--vqc-seed", type=int, default=0)
     ap.add_argument("--n-jobs", type=int, default=2)
     a = ap.parse_args()

@@ -291,7 +291,6 @@ class VQCClassifier(BaseEstimator, ClassifierMixin):
 
     def circuit_stats(self) -> dict:
         """Số qubit, độ sâu và số cổng CNOT của mạch (trước transpile)."""
-        from qiskit import QuantumCircuit
         qc = QuantumCircuit(self.k_)
         for _ in range(self.layers):
             qc.compose(self.fmap_, inplace=True)
@@ -323,7 +322,6 @@ def self_test(seed: int = 0) -> None:
         E_fast = v._expect_z(v._encode(X[:3]), v._blocks(theta))
         E_ref = []
         for x in X[:3]:
-            from qiskit import QuantumCircuit
             qc = QuantumCircuit(4)
             for l in range(layers):
                 qc.compose(v.fmap_.assign_parameters(x), inplace=True)

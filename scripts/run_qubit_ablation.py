@@ -1,10 +1,10 @@
 """Khảo sát số qubit và feature map.
 
---part qubits: số đặc trưng/qubit k = 2, 4, 6 cho LR, SVM, QSVC, QSVC-product, VQC
-               (CV phân tầng theo trung tâm, có tinh chỉnh).
+--part qubits: số đặc trưng/qubit k = 2, 4, 6 cho LR, SVM, MLP-balanced, QSVC, QSVC-product, VQC
+               (CV phân tầng theo trung tâm, có tinh chỉnh). Kết quả mới được ghép vào file đã có.
 --part maps:   với k = 4, so sánh các feature map của QSVC (zz linear/full, pauli_yzz, product,
                angle_ry) và đo mức tập trung của hàm nhân.
-Chạy: python -m scripts.run_qubit_ablation --part qubits --ks 2 4 6
+Chạy: python -m scripts.run_qubit_ablation --part qubits --ks 2 4 6 --models MLP-balanced
 Kết quả: results/ablation/qubit_summary.csv và feature_map_summary.csv
 """
 from __future__ import annotations
@@ -29,6 +29,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--part", choices=["qubits", "maps", "both"], default="both")
     ap.add_argument("--ks", nargs="*", type=int, default=[2, 4, 6])
+    ap.add_argument("--models", nargs="*", default=["LR", "SVM", "MLP-balanced", "QSVC", "QSVC-product", "VQC"])
     ap.add_argument("--n-jobs", type=int, default=2)
     a = ap.parse_args()
     df = load_dataset(ROOT)
@@ -39,15 +40,17 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     if a.part in {"qubits", "both"}:
         # Khảo sát số qubit
-        rows = []
+        path = out / "qubit_summary.csv"
+        rows = pd.read_csv(path).to_dict("records") if path.exists() else []
         for k in a.ks:
-            for n in ["LR", "SVM", "QSVC", "QSVC-product", "VQC"]:
+            for n in a.models:
+                rows = [r for r in rows if not (r["k"] == k and r["model"] == n)]
                 model, grid, kind = zoo[n]
                 r = cv_site_stratified(dev, model, grid, kind, "domain", k, n_jobs=a.n_jobs)
                 f1 = [x["macro_f1"] for x in r]
                 rows.append({"k": k, "model": n, "macro_f1_mean": np.mean(f1), "macro_f1_sd": np.std(f1, ddof=1)})
                 print(f"k={k} {n:13s} MacroF1={np.mean(f1):.3f}", flush=True)
-        pd.DataFrame(rows).to_csv(out / "qubit_summary.csv", index=False)
+                pd.DataFrame(rows).sort_values(["k", "model"]).to_csv(path, index=False)
 
     if a.part == "qubits":
         return

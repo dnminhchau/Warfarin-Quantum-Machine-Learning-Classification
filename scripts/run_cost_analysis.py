@@ -24,6 +24,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import StratifiedKFold, train_test_split
 from sklearn.svm import SVC
 
+from src.baselines import BalancedMLP
 from src.dataset import load_dataset, site_labels, split_ids
 from src.evaluation import classification_metrics, make_pipeline
 from src.quantum_models import QuantumKernelSVC, VQCClassifier, make_feature_map
@@ -35,6 +36,7 @@ VQC_MAXITER = 250
 MODELS = {
     "LR": (LogisticRegression(C=100, max_iter=5000, class_weight="balanced"), "classical"),
     "SVM": (SVC(C=10, gamma=0.01, class_weight="balanced"), "classical"),
+    "MLP-balanced": (BalancedMLP(hidden_layer_sizes=(16,), alpha=0.01), "classical"),
     "QSVC": (QuantumKernelSVC(feature_map="zz", bandwidth=0.05, C=10), "quantum"),
     "QSVC-product": (QuantumKernelSVC(feature_map="product", bandwidth=0.1, C=10), "quantum"),
     "VQC": (VQCClassifier(layers=2, reps=3, bandwidth=0.5, maxiter=VQC_MAXITER, seed=0), "quantum"),
@@ -109,9 +111,10 @@ def main():
     rows_n = []
     for n in a.sizes + [len(tr)]:
         sub = tr if n >= len(tr) else train_test_split(tr, train_size=n, random_state=0, stratify=y[tr])[0]
-        for name in ["LR", "SVM", "QSVC", "QSVC-product"]:
+        for name in ["LR", "SVM", "MLP-balanced", "QSVC", "QSVC-product", "VQC"]:
             model, kind = MODELS[name]
-            rows_n.append(measure(name, model, kind, 4, dev.iloc[sub], y[sub], Xva, yva, a.repeats))
+            reps = 1 if name == "VQC" else a.repeats
+            rows_n.append(measure(name, model, kind, 4, dev.iloc[sub], y[sub], Xva, yva, reps))
             print(f"n={len(sub)} {name:13s} fit={rows_n[-1]['fit_seconds']:.2f}s", flush=True)
         pd.DataFrame(rows_n).to_csv(OUT / "cost_by_train_size.csv", index=False)
 

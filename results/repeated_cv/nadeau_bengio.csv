@@ -1,5 +1,5 @@
-pair,n_folds,mean_diff,t,p_value,significant_0.05
-QSVC - SVM,25,-0.0157,-2.332,0.0284,True
-VQC - LR,25,-0.0362,-4.08,0.0004,True
-QSVC - QSVC-product,25,-0.0134,-2.027,0.0539,False
-LR - QSVC-product,25,0.0009,0.194,0.8482,False
+pair,n_folds,mean_diff,t,p_value,significant_0.05,p_holm,significant_holm_0.05
+QSVC - SVM,25,-0.0157,-2.332,0.0284,True,0.0852,False
+VQC - LR,25,-0.0362,-4.08,0.0004,True,0.0016,True
+QSVC - QSVC-product,25,-0.0134,-2.027,0.0539,False,0.1078,False
+LR - QSVC-product,25,0.0009,0.194,0.8482,False,0.8482,False
